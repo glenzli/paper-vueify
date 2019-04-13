@@ -1,20 +1,22 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <p-canvas width="800" height="600"></p-canvas>
+    <p-rectangle :element="r1"></p-rectangle>
+    <p-ellipse :element="e1"></p-ellipse>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
+import paper from 'paper'
+import { Component, Vue } from 'vue-property-decorator'
+import { Point, SolidBrush, Color } from './core'
+import { RectangleItem, EllipseItem } from './model'
 
-@Component({
-  components: {
-    HelloWorld,
-  },
-})
-export default class App extends Vue {}
+@Component
+export default class App extends Vue {
+  r1 = RectangleItem()
+  e1 = EllipseItem({ size: Point(120, 80), brush: SolidBrush(Color(0.5, 0.1, 0.1)) })
+}
 </script>
 
 <style lang="less">
