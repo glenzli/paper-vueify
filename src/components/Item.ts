@@ -37,5 +37,8 @@ export class ItemMixin extends Vue {
   mounted() {
     let item = $iMap.Get<PaperItemRenderer>(this.element.id)!
     item.Render()
+    item.UpdateCoordinate()
+    item.UpdateOpacity()
+    item.UpdateVisible()
   }
 }

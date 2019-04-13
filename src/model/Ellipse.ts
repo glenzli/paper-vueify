@@ -1,6 +1,6 @@
 import paper from 'paper'
 import { ShapeItemObject, ShapeItemRenderer, RawShapeItem } from './Shape'
-import { PointObject, Point } from '@/core'
+import { PointObject, Point, Stroke } from '@/core'
 
 export interface EllipseItemObject extends ShapeItemObject {
   size: PointObject,

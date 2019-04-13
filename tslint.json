@@ -25,6 +25,6 @@
     "arrow-parens": false,
     "variable-name": [true, "check-format", "allow-leading-underscore", "allow-pascal-case"],
     "member-ordering": false,
-    "no-console": false,
+    "no-console": false
   }
 }
