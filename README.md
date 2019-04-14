@@ -1,19 +1,19 @@
-# vue-paper
+# paper-vueify
 ## Introduction
-**Paper.js** is a very useful tool for creating complicate canvas shapes and animations. But using paper.js for tasks such as data visualiztion is not very convenient, and could produce many redundant code lines. On the other hand, **Vue** is data-driven framework and it's extremely friendly to data related operations. By combining these two powerful tools result a really nice workflow for data visualization and lightweight data-driven animation editing. That's the purpose of **paper-vue**.
+**Paper.js** is a very useful tool for creating complicate canvas shapes and animations. But using paper.js for tasks such as data visualiztion is not very convenient, and could produce many redundant code lines. On the other hand, **Vue** is data-driven framework and it's extremely friendly to data related operations. By combining these two powerful tools result a really nice workflow for data visualization and lightweight data-driven animation editing. That's the purpose of **paper-vueify**.
 
 ## Install
-The recommended way to install and maintain paper-vue in your project is through the Node.js Pacakge Manager (NPM), simply type the npm command in your project folder:
+The recommended way to install and maintain paper-vueify in your project is through the Node.js Pacakge Manager (NPM), simply type the npm command in your project folder:
 
 ```sh
-npm install paper-vuew
+npm install paper-vueifyw
 ```
 
-### Usage
+## Usage
 Vue only works properly with plain object, the library comes with a series of redefinition of basic paper object, and the parameters of each object is almost identical to the original.
-<br/>To use paper-vue, you may import component manually or use the installer to register all the components.
+<br/>To use paper-vueify, you may import component manually or use the installer to register all the components.
 ```javascript
-import { InstallPaperComponents } from 'paper-vue'
+import { InstallPaperComponents } from 'paper-vueify'
 
 InstallPaperComponents()
 ```
@@ -23,7 +23,7 @@ InstallPaperComponents()
   <p-canvas></p-canvas>
 </template>
 ```
-Creating shape in **paper-vue** is really simple, the following code create a round reactive red rectangle, any change to the data object will be reflected on the canvas drawing:
+Creating shape in **paper-vueify** is really simple, the following code create a round reactive red rectangle, any change to the data object will be reflected on the canvas drawing:
 ```html
 <template>
   <p-item :element="rect"></p-item>
@@ -37,7 +37,7 @@ Creating shape in **paper-vue** is really simple, the following code create a ro
   }
 </script>
 ```
-**p-item** can be used for all kind of items except symbol definition. In **paper.js**, the idea of symbol saves a lot of resources in drawing, to create a placed symbol, you need create a definition first. In **paper-vue**, you need a **SymbolDefinition** function to create a proper definition, with a unique user specified key to identify the definition. Then, you may create inifinite number of symbol to refer the key. The following code will create 40 symbols refer to the circle. The definition is not displayed, which is consistent with paper.js's.
+**p-item** can be used for all kind of items except symbol definition. In **paper.js**, the idea of symbol saves a lot of resources in drawing, to create a placed symbol, you need create a definition first. In **paper-vueify**, you need a **SymbolDefinition** function to create a proper definition, with a unique user specified key to identify the definition. Then, you may create inifinite number of symbol to refer the key. The following code will create 40 symbols refer to the circle. The definition is not displayed, which is consistent with paper.js's.
 
 ```html
 <template>
@@ -58,14 +58,14 @@ Creating shape in **paper-vue** is really simple, the following code create a ro
 ```
 Document will come later, please wait in patient.
 
-### Demo
-In demo folder, you can see some basic plays with **paper-vue**. With the data-reactive framework, it's easy to create very complicate canvas structure and animation (Though, it's not very suitable for very large scale graphic project).
+## Demo
+In demo folder, you can see some basic plays with **paper-vueify**. With the data-reactive framework, it's easy to create very complicate canvas structure and animation (Though, it's not very suitable for very large scale graphic project).
 <br/>Use following command to build demo into the docs folder (for github pages).
 ```sh
 npm run demo
 ```
-You can view the demos on my [Github Pages](https://luz-alphacode.github.io/paper-vue/).
+You can view the demos on my [Github Pages](https://luz-alphacode.github.io/paper-vueify/).
 
 
 ## License
-Distributed under the MIT license. See [LICENSE](https://github.com/luz-alphacode/paper-vue/blob/master/LICENSE) for detail.
+Distributed under the MIT license. See [LICENSE](https://github.com/luz-alphacode/paper-vueify/blob/master/LICENSE) for detail.

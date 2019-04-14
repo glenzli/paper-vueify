@@ -1,14 +1,14 @@
 {
-  "name": "paper-vue",
+  "name": "paper-vueify",
   "version": "1.0.0",
   "author": "luz-alphacode <luz_alphacode@outlook.com>",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name paper-vue ./src/lib.ts",
+    "build": "vue-cli-service build --target lib --name paper-vueify ./src/lib.ts",
     "lint": "vue-cli-service lint",
     "demo": "vue-cli-service build --dest docs"
   },
-  "main": "./dist/paper-vue.umd.js",
+  "main": "./dist/paper-vueify.umd.js",
   "dependencies": {
     "arrayex": "^1.0.1",
     "core-js": "^2.6.5",
