@@ -43,4 +43,4 @@ export class PathItemRenderer extends ShapeItemRenderer {
   }
 }
 
-const PATH_TYPE = RegisterItemType(PathItemRenderer)
+const PATH_TYPE = RegisterItemType(PathItemRenderer, 'Path')

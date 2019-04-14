@@ -35,4 +35,4 @@ export class PointTextItemRenderer extends ShapeItemRenderer {
   }
 }
 
-const POINT_TEXT_TYPE = RegisterItemType(PointTextItemRenderer)
+const POINT_TEXT_TYPE = RegisterItemType(PointTextItemRenderer, 'PointText')

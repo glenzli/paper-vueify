@@ -26,4 +26,4 @@ export class StarItemRenderer extends ShapeItemRenderer {
   }
 }
 
-const STAR_TYPE = RegisterItemType(StarItemRenderer)
+const STAR_TYPE = RegisterItemType(StarItemRenderer, 'Star')

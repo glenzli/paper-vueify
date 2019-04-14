@@ -22,4 +22,4 @@ export class CircleItemRenderer extends ShapeItemRenderer {
   }
 }
 
-const CIRCLE_TYPE = RegisterItemType(CircleItemRenderer)
+const CIRCLE_TYPE = RegisterItemType(CircleItemRenderer, 'Circle')

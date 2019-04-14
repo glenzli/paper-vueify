@@ -25,4 +25,4 @@ export class PolylineItemRenderer extends ShapeItemRenderer {
   }
 }
 
-const POLYLINE_TYPE = RegisterItemType(PolylineItemRenderer)
+const POLYLINE_TYPE = RegisterItemType(PolylineItemRenderer, 'Polyline')

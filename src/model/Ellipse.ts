@@ -23,4 +23,4 @@ export class EllipseItemRenderer extends ShapeItemRenderer {
   }
 }
 
-const ELLIPSE_TYPE = RegisterItemType(EllipseItemRenderer)
+const ELLIPSE_TYPE = RegisterItemType(EllipseItemRenderer, 'Ellipse')

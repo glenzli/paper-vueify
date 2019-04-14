@@ -23,4 +23,4 @@ export class PolygonItemRenderer extends ShapeItemRenderer {
   }
 }
 
-const POLYGON_TYPE = RegisterItemType(PolygonItemRenderer)
+const POLYGON_TYPE = RegisterItemType(PolygonItemRenderer, 'Polygon')

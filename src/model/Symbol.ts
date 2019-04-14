@@ -31,4 +31,4 @@ export class SymbolItemRenderer extends PaperItemRenderer {
   }
 }
 
-const SYMBOL_TYPE = RegisterItemType(SymbolItemRenderer)
+const SYMBOL_TYPE = RegisterItemType(SymbolItemRenderer, 'Symbol')

@@ -19,5 +19,5 @@ export class GroupItemRenderer extends PaperItemRenderer {
   }
 }
 
-const GROUP_TYPE = RegisterItemType(GroupItemRenderer)
+const GROUP_TYPE = RegisterItemType(GroupItemRenderer, 'Group')
 

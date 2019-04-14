@@ -100,8 +100,8 @@ let ITEM_TYPE = 0
 const ITEM_MAP = new Map<number, string>()
 const ITEM_TYPE_MAP = new Map<number, new() => any>()
 
-export function RegisterItemType(type: new() => any) {
-  ITEM_MAP.set(ITEM_TYPE, type.name.replace('ItemRenderer', ''))
+export function RegisterItemType(type: new() => any, typename: string) {
+  ITEM_MAP.set(ITEM_TYPE, typename)
   ITEM_TYPE_MAP.set(ITEM_TYPE, type)
   return ITEM_TYPE++
 }

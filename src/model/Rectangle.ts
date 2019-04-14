@@ -25,4 +25,4 @@ export class RectangleItemRenderer extends ShapeItemRenderer {
   }
 }
 
-const RECTANGLE_TYPE = RegisterItemType(RectangleItemRenderer)
+const RECTANGLE_TYPE = RegisterItemType(RectangleItemRenderer, 'Rectangle')
