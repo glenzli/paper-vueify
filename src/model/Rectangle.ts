@@ -18,7 +18,7 @@ export class RectangleItemRenderer extends ShapeItemRenderer {
       point: [-element.size.x / 2, -element.size.y / 2],
       size: [element.size.x, element.size.y],
       radius: [element.corner.x, element.corner.y],
-      applyMatrix: true,
+      applyMatrix: false,
       insert: false,
     })
     return rectangle
@@ -27,5 +27,5 @@ export class RectangleItemRenderer extends ShapeItemRenderer {
 
 export function RectangleItem(rectangle: Partial<RectangleItemObject> = {}) {
   let raw = RawRectangleItem(rectangle)
-  return new RectangleItemRenderer(raw).element
+  return new RectangleItemRenderer(raw).element as RectangleItemObject
 }

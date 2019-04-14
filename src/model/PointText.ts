@@ -21,21 +21,21 @@ export function RawPointTextItem({ fontFamily = 'arial', fontSize = 16, fontWeig
 export class PointTextItemRenderer extends ShapeItemRenderer {
   RenderVisual() {
     let element = this._element as PointTextItemObject
-    let PointText = new paper.PointText({
+    let pointText = new paper.PointText({
       point: [0, 0],
       content: element.content,
       fontFamily: element.fontFamily,
       fontSize: element.fontSize,
       fontWeight: element.fontWeight,
       justification: element.justification,
-      applyMatrix: true,
+      applyMatrix: false,
       insert: false,
     })
-    return PointText
+    return pointText
   }
 }
 
-export function PointTextItem(PointText: Partial<PointTextItemObject> = {}) {
-  let raw = RawPointTextItem(PointText)
-  return new PointTextItemRenderer(raw).element
+export function PointTextItem(pointText: Partial<PointTextItemObject> = {}) {
+  let raw = RawPointTextItem(pointText)
+  return new PointTextItemRenderer(raw).element as PointTextItemObject
 }

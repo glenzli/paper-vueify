@@ -29,8 +29,8 @@ export class ShapeItemRenderer extends PaperItemRenderer {
     this._visual.set(props)
   }
 
-  Render() {
-    super.Render()
+  Render(symbolic = false) {
+    super.Render(symbolic)
     this.Paint()
   }
 }

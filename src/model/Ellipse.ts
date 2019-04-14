@@ -1,6 +1,6 @@
 import paper from 'paper'
 import { ShapeItemObject, ShapeItemRenderer, RawShapeItem } from './Shape'
-import { PointObject, Point, Stroke } from '@/core'
+import { PointObject, Point } from '@/core'
 
 export interface EllipseItemObject extends ShapeItemObject {
   size: PointObject,
@@ -13,17 +13,17 @@ export function RawEllipseItem({ size = Point(100, 100), ...shape }: Partial<Ell
 export class EllipseItemRenderer extends ShapeItemRenderer {
   RenderVisual() {
     let element = this._element as EllipseItemObject
-    let Ellipse = new paper.Path.Ellipse({
+    let ellipse = new paper.Path.Ellipse({
       point: [-element.size.x / 2, -element.size.y / 2],
       size: [element.size.x, element.size.y],
-      applyMatrix: true,
+      applyMatrix: false,
       insert: false,
     })
-    return Ellipse
+    return ellipse
   }
 }
 
-export function EllipseItem(Ellipse: Partial<EllipseItemObject> = {}) {
-  let raw = RawEllipseItem(Ellipse)
-  return new EllipseItemRenderer(raw).element
+export function EllipseItem(ellipse: Partial<EllipseItemObject> = {}) {
+  let raw = RawEllipseItem(ellipse)
+  return new EllipseItemRenderer(raw).element as EllipseItemObject
 }

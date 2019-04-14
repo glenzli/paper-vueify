@@ -8,11 +8,13 @@ export interface SegmentObject {
   handleOut: PointObject,
 }
 
-export interface PathContextObject {
+interface PathContextObject {
   segments: Array<SegmentObject>,
 }
 
-export interface PathItemObject extends ShapeItemObject, PathContextObject {
+export interface PathItemObject extends ShapeItemObject {
+  segments?: Array<SegmentObject>,
+  children?: Array<PathContextObject>,
   closed: boolean,
 }
 
@@ -23,16 +25,25 @@ export function RawPathItem({ segments = [], closed = true, ...shape }: Partial<
 export class PathItemRenderer extends ShapeItemRenderer {
   RenderVisual() {
     let element = this._element as PathItemObject
-    let Path = new paper.Path({
-      segments: element.segments,
-      applyMatrix: true,
-      insert: false,
-    })
-    return Path
+    if (element.children) {
+      return new paper.CompoundPath({
+        children: element.children.map(c => new paper.Path({ segments: c.segments, applyMatrix: false, closed: element.closed, insert: false })),
+        closed: element.closed,
+        applyMatrix: false,
+        insert: false,
+      })
+    } else {
+      return new paper.Path({
+        segments: element.segments,
+        closed: element.closed,
+        applyMatrix: false,
+        insert: false,
+      })
+    }
   }
 }
 
-export function PathItem(Path: Partial<PathItemObject> = {}) {
-  let raw = RawPathItem(Path)
-  return new PathItemRenderer(raw).element
+export function PathItem(path: Partial<PathItemObject> = {}) {
+  let raw = RawPathItem(path)
+  return new PathItemRenderer(raw).element as PathItemObject
 }

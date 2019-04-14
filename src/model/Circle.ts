@@ -12,17 +12,17 @@ export function RawCircleItem({ radius = 50, ...shape }: Partial<CircleItemObjec
 export class CircleItemRenderer extends ShapeItemRenderer {
   RenderVisual() {
     let element = this._element as CircleItemObject
-    let Ellipse = new paper.Path.Ellipse({
-      point: [-element.radius / 2, -element.radius / 2],
-      size: [element.radius, element.radius],
-      applyMatrix: true,
+    let circle = new paper.Path.Ellipse({
+      point: [-element.radius, -element.radius],
+      size: [2 * element.radius, 2 * element.radius],
+      applyMatrix: false,
       insert: false,
     })
-    return Ellipse
+    return circle
   }
 }
 
-export function CircleItem(Circle: Partial<CircleItemObject> = {}) {
-  let raw = RawCircleItem(Circle)
-  return new CircleItemRenderer(raw).element
+export function CircleItem(circle: Partial<CircleItemObject> = {}) {
+  let raw = RawCircleItem(circle)
+  return new CircleItemRenderer(raw).element as CircleItemObject
 }

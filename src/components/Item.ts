@@ -1,3 +1,4 @@
+import paper from 'paper'
 import Vue from 'vue'
 import { Component, Prop, Watch } from 'vue-property-decorator'
 import { PaperItemObject, $iMap, PaperItemRenderer } from '@/model'
@@ -5,6 +6,7 @@ import { PaperItemObject, $iMap, PaperItemRenderer } from '@/model'
 @Component
 export class ItemMixin extends Vue {
   @Prop({ required: true }) element!: PaperItemObject
+  @Prop({ default: false }) symbolic!: boolean
 
   get context() {
     return {}
@@ -13,7 +15,8 @@ export class ItemMixin extends Vue {
   @Watch('context', { deep: true })
   OnContextChanged() {
     let item = $iMap.Get<PaperItemRenderer>(this.element.id)!
-    item.Render()
+    item.Render(this.symbolic)
+    this.$emit('draw')
   }
 
   @Watch('element.coordinate', { deep: true })
@@ -34,11 +37,21 @@ export class ItemMixin extends Vue {
     item.UpdateVisible()
   }
 
+  On(type: string, event?: paper.Event) {
+    this.$emit(type, event)
+  }
+
   mounted() {
     let item = $iMap.Get<PaperItemRenderer>(this.element.id)!
-    item.Render()
-    item.UpdateCoordinate()
-    item.UpdateOpacity()
-    item.UpdateVisible()
+    item.On((type, event) => this.On(type, event))
+    item.Render(this.symbolic)
+    this.$emit('draw')
+  }
+
+  beforeDestroy() {
+    let item = $iMap.Get<PaperItemRenderer>(this.element.id)
+    if (item) {
+      item.Destroy()
+    }
   }
 }

@@ -8,11 +8,12 @@ import { ShapeMixin } from './Shape'
 import { PathItemObject } from '../model'
 
 @Component
-export default class extends Mixins(ShapeMixin) {
+export default class PPath extends Mixins(ShapeMixin) {
   get context() {
     let element = this.element as PathItemObject
     return {
       segments: element.segments,
+      children: element.children,
       closed: element.closed,
     }
   }

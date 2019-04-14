@@ -1,26 +1,41 @@
 <template>
   <div id="app" class="container">
     <div class="title">Vue Paper: Demo</div>
+    <div class="menu">
+      <div v-for="(name, index) in names" :key="index" class="item" :class="{ selected: index === selected }" @click="Select(index)">{{name}}</div>
+    </div>
+    <div class="description">{{description}}</div>
     <div class="stage">
       <p-canvas :autosize="true"></p-canvas>
-      <p-rectangle :element="r1"></p-rectangle>
-      <p-ellipse :element="e1"></p-ellipse>
-      <p-point-text :element="t1"></p-point-text>
     </div>
+    <component :is="demo" class="zero"></component>
   </div>
 </template>
 
 <script lang="ts">
 import paper from 'paper'
 import { Component, Vue } from 'vue-property-decorator'
-import { Point, SolidBrush, Color, Coordinate } from './core'
-import { RectangleItem, EllipseItem, PointTextItem } from './model'
+import { Demos, DemoDescriptions } from './demo'
 
-@Component
+@Component({
+  components: Demos,
+})
 export default class App extends Vue {
-  r1 = RectangleItem()
-  e1 = EllipseItem({ size: Point(120, 80), brush: SolidBrush(Color(0.5, 0.1, 0.1)), coordinate: Coordinate({ position: Point(100, 0) }) })
-  t1 = PointTextItem({ content: 'Demo Test', coordinate: Coordinate({ position: Point(200, 0) }) })
+  names = Object.keys(Demos).map(d => d.replace('Demo', ''))
+  selected = 0
+
+  get demo() {
+    return `${this.names[this.selected]}Demo`
+  }
+
+  get description() {
+    return DemoDescriptions[this.demo]
+  }
+
+  Select(index: number) {
+    paper.project.activeLayer.removeChildren()
+    this.selected = index
+  }
 }
 </script>
 
@@ -35,7 +50,6 @@ html, body {
   font-family: Consolas, 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
 }
 
 .container {
@@ -48,14 +62,49 @@ html, body {
 .title {
   background: #333;
   color: #ccc;
-  height: 5rem;
+  height: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
+  user-select: none;
+}
+
+.menu {
+  display: flex;
+  background: #444;
+  padding: 0;
+
+  .item {
+    padding: 0.5rem 2rem;
+    color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: initial;
+    user-select: none;
+
+    &.selected {
+      background: #333;
+    }
+
+    &:hover {
+      background: #555;
+    }
+  }
+}
+
+.description {
+  padding: 0.5rem 1rem;;
+  background: #555;
+  color: #ccc;
 }
 
 .stage {
   flex: 1;
+}
+
+.zero {
+  height: 0;
 }
 </style>

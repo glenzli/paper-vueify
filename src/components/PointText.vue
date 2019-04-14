@@ -8,7 +8,7 @@ import { ShapeMixin } from './Shape'
 import { PointTextItemObject } from '../model'
 
 @Component
-export default class extends Mixins(ShapeMixin) {
+export default class PPointText extends Mixins(ShapeMixin) {
   get context() {
     let element = this.element as PointTextItemObject
     return {

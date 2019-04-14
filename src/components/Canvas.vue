@@ -7,7 +7,7 @@ import paper from 'paper'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
-export default class extends Vue {
+export default class PCanvas extends Vue {
   @Prop({ default: false }) autosize!: boolean
 
   ResizeCanvas() {
