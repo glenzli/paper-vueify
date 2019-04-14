@@ -1,12 +1,14 @@
 {
   "name": "paper-vue",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "author": "luz-alphacode <luz_alphacode@outlook.com>",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "build": "vue-cli-service build --target lib --name paper-vue ./src/lib.ts",
+    "lint": "vue-cli-service lint",
+    "demo": "vue-cli-service build --dest docs"
   },
+  "main": "./dist/paper-vue.umd.js",
   "dependencies": {
     "arrayex": "^1.0.1",
     "core-js": "^2.6.5",
@@ -25,5 +27,8 @@
     "less-loader": "^4.1.0",
     "typescript": "^3.2.1",
     "vue-template-compiler": "^2.5.21"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }

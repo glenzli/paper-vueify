@@ -9,7 +9,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import Tadpole from './component/Tadpole.vue'
 import { Point, Stroke, SolidBrush, Color$, Shadow } from '../core'
-import { CircleItem } from '../model';
+import { CircleItem } from '../model'
 
 @Component({
   components: { Tadpole },
