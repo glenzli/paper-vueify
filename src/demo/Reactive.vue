@@ -1,8 +1,8 @@
 <template>
   <div>
-    <p-polygon v-for="mark in marks" :key="mark.id" :element="mark"></p-polygon>
-    <p-polyline :element="polyline"></p-polyline>
-    <p-circle v-for="dot in dots" :key="dot.id" :element="dot"></p-circle>
+    <p-item v-for="mark in marks" :key="mark.id" :element="mark"></p-item>
+    <p-item :element="polyline"></p-item>
+    <p-item v-for="dot in dots" :key="dot.id" :element="dot"></p-item>
   </div>
 </template>
 
@@ -63,6 +63,6 @@ export default class extends Vue {
   }
 }
 
-export const Description = 'By use vue and paper.js together, it\s extremely easy for advanced data visualization based on vue\'s reactivity.'
+export const Description = 'By use vue and paper.js together, it\s extremely easy for advanced and rich-style data visualization based on vue\'s reactivity.'
 </script>
 

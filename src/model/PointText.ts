@@ -1,5 +1,6 @@
 import paper from 'paper'
-import { ShapeItemObject, ShapeItemRenderer, RawShapeItem } from './Shape'
+import { ShapeItemObject, ShapeItemRenderer, ShapeItem } from './Shape'
+import { RegisterItemType } from './Item'
 
 export interface PointTextItemObject extends ShapeItemObject {
   fontFamily: string,
@@ -10,8 +11,8 @@ export interface PointTextItemObject extends ShapeItemObject {
   content: string,
 }
 
-export function RawPointTextItem({ fontFamily = 'arial', fontSize = 16, fontWeight = 'normal', justification = 'center', lineHeight = 1.2, content = 'Text', ...shape }: Partial<PointTextItemObject> = {}) {
-  let textObject = { fontFamily, fontSize, fontWeight, justification, lineHeight, content, ...RawShapeItem(shape) } as PointTextItemObject
+export function PointTextItem({ fontFamily = 'arial', fontSize = 16, fontWeight = 'normal', justification = 'center', lineHeight = 1.2, content = 'Text', ...shape }: Partial<PointTextItemObject> = {}) {
+  let textObject = { fontFamily, fontSize, fontWeight, justification, lineHeight, content, ...ShapeItem(POINT_TEXT_TYPE, shape) } as PointTextItemObject
   if (!arguments[0] || !arguments[0].stroke) {
     textObject.stroke.thickness = 0
   }
@@ -19,8 +20,7 @@ export function RawPointTextItem({ fontFamily = 'arial', fontSize = 16, fontWeig
 }
 
 export class PointTextItemRenderer extends ShapeItemRenderer {
-  RenderVisual() {
-    let element = this._element as PointTextItemObject
+  RenderVisual(element: PointTextItemObject) {
     let pointText = new paper.PointText({
       point: [0, 0],
       content: element.content,
@@ -35,7 +35,4 @@ export class PointTextItemRenderer extends ShapeItemRenderer {
   }
 }
 
-export function PointTextItem(pointText: Partial<PointTextItemObject> = {}) {
-  let raw = RawPointTextItem(pointText)
-  return new PointTextItemRenderer(raw).element as PointTextItemObject
-}
+const POINT_TEXT_TYPE = RegisterItemType(PointTextItemRenderer)

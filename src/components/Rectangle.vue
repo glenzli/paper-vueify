@@ -13,7 +13,7 @@ export default class PRectangle extends Mixins(ShapeMixin) {
     let element = this.element as RectangleItemObject
     return {
       size: element.size,
-      corner: element.corner,
+      radius: element.radius,
     }
   }
 }

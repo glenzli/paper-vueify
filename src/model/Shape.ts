@@ -1,5 +1,5 @@
 import paper from 'paper'
-import { PaperItemObject, RawPaperItem, PaperItemRenderer } from './Item'
+import { PaperItemObject, PaperItem, PaperItemRenderer } from './Item'
 import { BrushObject, StrokeObject, ShadowObject, Stroke$, Brush$, Shadow$, SolidBrush, Stroke, Shadow } from '@/core'
 
 export interface ShapeItemObject extends PaperItemObject {
@@ -8,15 +8,13 @@ export interface ShapeItemObject extends PaperItemObject {
   shadow: ShadowObject,
 }
 
-export function RawShapeItem({ brush = SolidBrush(), stroke = Stroke(), shadow = Shadow(), ...item }: Partial<ShapeItemObject> = {}) {
-  return { brush, stroke, shadow, ...RawPaperItem(item) } as ShapeItemObject
+export function ShapeItem(type: number, { brush = SolidBrush(), stroke = Stroke(), shadow = Shadow(), ...item }: Partial<ShapeItemObject> = {}) {
+  return { brush, stroke, shadow, ...PaperItem(type, item) } as ShapeItemObject
 }
 
-
 export class ShapeItemRenderer extends PaperItemRenderer {
-  protected CompileStyle() {
+  protected CompileStyle(element: ShapeItemObject) {
     let visual = this._visual as paper.PathItem
-    let element = this._element as ShapeItemObject
     let props = {}
     Object.assign(props, Stroke$.Interpret(element.stroke, visual))
     Object.assign(props, { fillColor: Brush$.Interpret(element.brush, visual) })
@@ -24,13 +22,13 @@ export class ShapeItemRenderer extends PaperItemRenderer {
     return props
   }
 
-  Paint() {
-    let props = this.CompileStyle()
+  Paint(element: ShapeItemObject) {
+    let props = this.CompileStyle(element)
     this._visual.set(props)
   }
 
-  Render(symbolic = false) {
-    super.Render(symbolic)
-    this.Paint()
+  Render(element: ShapeItemObject) {
+    super.Render(element)
+    this.Paint(element)
   }
 }

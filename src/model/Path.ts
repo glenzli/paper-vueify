@@ -1,6 +1,7 @@
 import paper from 'paper'
-import { ShapeItemObject, ShapeItemRenderer, RawShapeItem } from './Shape'
+import { ShapeItemObject, ShapeItemRenderer, ShapeItem } from './Shape'
 import { PointObject } from '@/core'
+import { RegisterItemType } from './Item'
 
 export interface SegmentObject {
   point: PointObject,
@@ -18,13 +19,12 @@ export interface PathItemObject extends ShapeItemObject {
   closed: boolean,
 }
 
-export function RawPathItem({ segments = [], closed = true, ...shape }: Partial<PathItemObject> = {}) {
-  return { segments, closed, ...RawShapeItem(shape) } as PathItemObject
+export function PathItem({ segments = [], closed = true, ...shape }: Partial<PathItemObject> = {}) {
+  return { segments, closed, ...ShapeItem(PATH_TYPE, shape) } as PathItemObject
 }
 
 export class PathItemRenderer extends ShapeItemRenderer {
-  RenderVisual() {
-    let element = this._element as PathItemObject
+  RenderVisual(element: PathItemObject) {
     if (element.children) {
       return new paper.CompoundPath({
         children: element.children.map(c => new paper.Path({ segments: c.segments, applyMatrix: false, closed: element.closed, insert: false })),
@@ -43,7 +43,4 @@ export class PathItemRenderer extends ShapeItemRenderer {
   }
 }
 
-export function PathItem(path: Partial<PathItemObject> = {}) {
-  let raw = RawPathItem(path)
-  return new PathItemRenderer(raw).element as PathItemObject
-}
+const PATH_TYPE = RegisterItemType(PathItemRenderer)

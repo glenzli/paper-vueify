@@ -33,9 +33,9 @@ export namespace PaperGraphic$ {
     }
   }
 
-  export function Clone(item: PaperItemObject, exlcudes: Array<string> = []) {
-    let clone = Generic.Clone(item, { deepExcludes: exlcudes })
-    let originRenderer = $iMap.Get<PaperItemRenderer>(clone.id)!
-    return new (originRenderer.constructor as new(e: PaperItemObject) => PaperItemRenderer)(clone).element
-  }
+  // export function Clone(item: PaperItemObject, exlcudes: Array<string> = []) {
+  //   let clone = Generic.Clone(item, { deepExcludes: exlcudes })
+  //   let originRenderer = $iMap.Get<PaperItemRenderer>(clone.id)!
+  //   return new (originRenderer.constructor as new(e: PaperItemObject) => PaperItemRenderer)(clone).element
+  // }
 }

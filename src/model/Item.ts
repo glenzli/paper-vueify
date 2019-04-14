@@ -3,53 +3,41 @@ import { CoordinateObject, Coordinate, Coordinate$ } from '@/core'
 import { $iMap } from './IMap'
 
 export interface PaperItemObject {
-  id: number,
+  type: number,
   coordinate: CoordinateObject,
   opacity: number,
   visible: boolean,
 }
 
-export function RawPaperItem({ coordinate = Coordinate(), opacity = 1, visible = true }: Partial<PaperItemObject> = {}) {
-  return { id: -1, coordinate, opacity, visible } as PaperItemObject
+export function PaperItem(type: number, { coordinate = Coordinate(), opacity = 1, visible = true }: Partial<PaperItemObject> = {}) {
+  return { type, coordinate, opacity, visible } as PaperItemObject
 }
 
 export class PaperItemRenderer {
-  protected _element: PaperItemObject
+  protected _id: number
   protected _visual!: paper.Item
-  protected _symbolic: boolean = false
-  protected _symbol!: paper.Symbol
   protected _on: ((type: string, event?: paper.MouseEvent) => void) | null = null
 
-  constructor(element: PaperItemObject) {
-    this._element = element
-    this._element.id = $iMap.New(this)
+  constructor() {
+    this._id = $iMap.New(this)
     if (paper.view) {
-      this._visual = new paper.Path()
-      this._symbol = new paper.Symbol(new paper.Path())
+      this.InitVisual()
     }
   }
 
-  get id() {
-    return this._element.id
+  protected InitVisual() {
+    this._visual = new paper.Path()
   }
 
-  get element() {
-    return this._element
+  get id() {
+    return this._id
   }
 
   get visual() {
     return this._visual
   }
 
-  get symoblic() {
-    return this._symbolic
-  }
-
-  get symbol() {
-    return this._symbol
-  }
-
-  protected RenderVisual(): paper.Item | null {
+  protected RenderVisual(element: PaperItemObject): paper.Item | null {
     return new paper.Path()
   }
 
@@ -72,8 +60,7 @@ export class PaperItemRenderer {
 
   protected ReplaceVisual(visual: paper.Item | null) {
     if (!this._visual || !this._visual.parent) {
-      this._visual = new paper.Path()
-      this._symbol = new paper.Symbol(new paper.Path())
+      this.InitVisual()
     }
     if (visual) {
       this._visual.replaceWith(visual)
@@ -81,35 +68,48 @@ export class PaperItemRenderer {
       this._visual = visual
       this.Hook()
     }
-    if (this._symbolic) {
-      this._symbol.definition = this._visual
-    } else {
-      this._symbol.definition = new paper.Path()
-    }
   }
 
-  Render(symbolic: boolean = false) {
-    this._symbolic = symbolic
-    this.ReplaceVisual(this.RenderVisual())
-    this.UpdateCoordinate()
-    this.UpdateOpacity()
-    this.UpdateVisible()
+  Render(element: PaperItemObject) {
+    this.ReplaceVisual(this.RenderVisual(element))
+    this.UpdateCoordinate(element.coordinate)
+    this.UpdateOpacity(element.opacity)
+    this.UpdateVisible(element.visible)
   }
 
-  UpdateCoordinate() {
-    this._visual.matrix = Coordinate$.ToMatrix(this._element.coordinate)
+  UpdateCoordinate(coordinate: CoordinateObject) {
+    this._visual.matrix = Coordinate$.ToMatrix(coordinate)
   }
 
-  UpdateOpacity() {
-    this._visual.opacity = this._element.opacity
+  UpdateOpacity(opacity: number) {
+    this._visual.opacity = opacity
   }
 
-  UpdateVisible() {
-    this._visual.visible = this._element.visible
+  UpdateVisible(visible: boolean) {
+    this._visual.visible = visible
   }
 
   Destroy() {
     this._visual.remove()
-    $iMap.Delete(this._element.id)
+    $iMap.Delete(this._id)
   }
+}
+
+
+let ITEM_TYPE = 0
+const ITEM_MAP = new Map<number, string>()
+const ITEM_TYPE_MAP = new Map<number, new() => any>()
+
+export function RegisterItemType(type: new() => any) {
+  ITEM_MAP.set(ITEM_TYPE, type.name.replace('ItemRenderer', ''))
+  ITEM_TYPE_MAP.set(ITEM_TYPE, type)
+  return ITEM_TYPE++
+}
+
+export function GetItemTypename(type: number) {
+  return ITEM_MAP.get(type)
+}
+
+export function GetItemType(type: number) {
+  return ITEM_TYPE_MAP.get(type)
 }

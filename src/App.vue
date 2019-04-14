@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="container">
-    <div class="title">Vue Paper: Demo</div>
+    <div class="title">Paper-Vue: Demo</div>
     <div class="menu">
       <div v-for="(name, index) in names" :key="index" class="item" :class="{ selected: index === selected }" @click="Select(index)">{{name}}</div>
     </div>

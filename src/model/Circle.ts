@@ -1,17 +1,17 @@
 import paper from 'paper'
-import { ShapeItemObject, ShapeItemRenderer, RawShapeItem } from './Shape'
+import { ShapeItemObject, ShapeItemRenderer, ShapeItem } from './Shape'
+import { RegisterItemType } from './Item'
 
 export interface CircleItemObject extends ShapeItemObject {
   radius: number,
 }
 
-export function RawCircleItem({ radius = 50, ...shape }: Partial<CircleItemObject> = {}) {
-  return { radius, ...RawShapeItem(shape) } as CircleItemObject
+export function CircleItem({ radius = 50, ...shape }: Partial<CircleItemObject> = {}) {
+  return { radius, ...ShapeItem(CIRCLE_TYPE, shape) } as CircleItemObject
 }
 
 export class CircleItemRenderer extends ShapeItemRenderer {
-  RenderVisual() {
-    let element = this._element as CircleItemObject
+  RenderVisual(element: CircleItemObject) {
     let circle = new paper.Path.Ellipse({
       point: [-element.radius, -element.radius],
       size: [2 * element.radius, 2 * element.radius],
@@ -22,7 +22,4 @@ export class CircleItemRenderer extends ShapeItemRenderer {
   }
 }
 
-export function CircleItem(circle: Partial<CircleItemObject> = {}) {
-  let raw = RawCircleItem(circle)
-  return new CircleItemRenderer(raw).element as CircleItemObject
-}
+const CIRCLE_TYPE = RegisterItemType(CircleItemRenderer)

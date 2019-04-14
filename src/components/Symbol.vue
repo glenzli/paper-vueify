@@ -6,13 +6,13 @@
 import { Component, Mixins } from 'vue-property-decorator'
 import { DirectMap } from 'direct-object'
 import { SymbolItemObject } from '../model'
-import { ItemMixin } from './Item'
+import { BasicMixin } from './Basic'
 
 @Component
-export default class PSymbol extends Mixins(ItemMixin) {
+export default class PSymbol extends Mixins(BasicMixin) {
   get context() {
     return {
-      reference: (this.element as SymbolItemObject).reference,
+      key: (this.element as SymbolItemObject).key,
     }
   }
 }

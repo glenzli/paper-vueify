@@ -1,29 +1,34 @@
 import paper from 'paper'
-import { PaperItemObject, RawPaperItem, PaperItemRenderer } from './Item'
+import { PaperItemObject, PaperItem, PaperItemRenderer, RegisterItemType } from './Item'
 import { $iMap } from './IMap'
 
-export interface SymbolItemObject extends PaperItemObject {
-  reference: number,
+export interface SymbolDefinitionObject {
+  key: string,
+  definition: PaperItemObject,
 }
 
-export function RawSymbolItem({ reference = -1, ...base }: Partial<SymbolItemObject>) {
-  return { reference, ...RawPaperItem(base) } as SymbolItemObject
+export function SymbolDefinition(key: string, definition: PaperItemObject) {
+  return { key, definition }
+}
+
+export interface SymbolItemObject extends PaperItemObject {
+  key: string,
+}
+
+export function SymbolItem({ key = '', ...base }: Partial<SymbolItemObject>) {
+  return { key, ...PaperItem(SYMBOL_TYPE, base) } as SymbolItemObject
 }
 
 export class SymbolItemRenderer extends PaperItemRenderer {
-  RenderVisual() {
-    let reference = (this._element as SymbolItemObject).reference
-    if (reference > -1) {
-      let original = $iMap.Get<PaperItemRenderer>(reference)!
-      if (original && original.symoblic && original.symbol) {
-        return new paper.PlacedSymbol(original.symbol)
+  RenderVisual(element: SymbolItemObject) {
+    if (element.key) {
+      let symbol = $iMap.Get<paper.Symbol>(element.key)
+      if (symbol) {
+        return new paper.PlacedSymbol(symbol)
       }
     }
     return new paper.Path()
   }
 }
 
-export function SymbolItem(symbol: Partial<SymbolItemObject> = {}) {
-  let raw = RawSymbolItem(symbol)
-  return new SymbolItemRenderer(raw).element as SymbolItemObject
-}
+const SYMBOL_TYPE = RegisterItemType(SymbolItemRenderer)

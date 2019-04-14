@@ -1,18 +1,18 @@
 import paper from 'paper'
-import { ShapeItemObject, ShapeItemRenderer, RawShapeItem } from './Shape'
+import { ShapeItemObject, ShapeItemRenderer, ShapeItem } from './Shape'
 import { PointObject, Point } from '@/core'
+import { RegisterItemType } from './Item'
 
 export interface PolygonItemObject extends ShapeItemObject {
   points: Array<PointObject>
 }
 
-export function RawPolygonItem({ points = [Point(-50, 50), Point(50, 50), Point(50, -50)], ...shape }: Partial<PolygonItemObject> = {}) {
-  return { points, ...RawShapeItem(shape) } as PolygonItemObject
+export function PolygonItem({ points = [Point(-50, 50), Point(50, 50), Point(50, -50)], ...shape }: Partial<PolygonItemObject> = {}) {
+  return { points, ...ShapeItem(POLYGON_TYPE, shape) } as PolygonItemObject
 }
 
 export class PolygonItemRenderer extends ShapeItemRenderer {
-  RenderVisual() {
-    let element = this._element as PolygonItemObject
+  RenderVisual(element: PolygonItemObject) {
     let polygon = new paper.Path({
       segments: element.points.map(p => [p.x, p.y]),
       closed: true,
@@ -23,7 +23,4 @@ export class PolygonItemRenderer extends ShapeItemRenderer {
   }
 }
 
-export function PolygonItem(polygon: Partial<PolygonItemObject> = {}) {
-  let raw = RawPolygonItem(polygon)
-  return new PolygonItemRenderer(raw).element as PolygonItemObject
-}
+const POLYGON_TYPE = RegisterItemType(PolygonItemRenderer)
