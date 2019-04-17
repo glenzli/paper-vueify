@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p-group :element="tadpole"></p-group>
+    <p-item :element="tadpole"></p-item>
   </div>
 </template>
 

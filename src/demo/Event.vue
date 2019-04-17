@@ -2,7 +2,7 @@
   <div>
     <p-item :element="boundary" @mousemove="Move" @mouseleave="Leave"></p-item>
     <p-symbol-definition :element="circle"></p-symbol-definition>
-    <p-symbol v-for="symbol in symbols" :key="symbol.id" :element="symbol"></p-symbol>
+    <p-item v-for="symbol in symbols" :key="symbol.id" :element="symbol"></p-item>
   </div>
 </template>
 
@@ -73,7 +73,5 @@ export default class extends Vue {
     }
   }
 }
-
-export const Description = 'Use event in Vue style is more straightforward. DEMO HINT: Move cursor inside box.'
 </script>
 

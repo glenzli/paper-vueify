@@ -1,13 +1,13 @@
 <template>
   <div>
     <p-symbol-definition v-for="definition in definitions" :key="definition.key" :element="definition"></p-symbol-definition>
-    <p-symbol v-for="(element, index) in symbols" :key="index" :element="element"></p-symbol>
+    <p-item v-for="(element, index) in symbols" :key="index" :element="element"></p-item>
     <p-item v-for="(element, index) in buttons" :key="`b${index}`" :element="element" @click="Select(index)"></p-item>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Prop } from 'vue-property-decorator'
 import { DirectMap, DirectMapObject, Generic } from 'direct-object'
 import { RectangleItem, CircleItem, RegularPolygonItem, StarItem, PaperGraphic$, PaperItemObject, SymbolItem, SymbolDefinition, PointTextItem } from '../model'
 import { Point, SolidBrush, Color$, Coordinate, Stroke, Shadow, Point$ } from '../core'
@@ -25,6 +25,7 @@ const STROKE = Stroke({ thickness: 0 })
 
 @Component
 export default class extends Vue {
+  @Prop({ default: () => ({ width: 0, height: 0 }) }) size!: { width: number, height: number }
   definitions = [
     SymbolDefinition('rectangle', RectangleItem({ size: Point(50, 50), brush: SolidBrush(Color$.ToColor('#a83535')), stroke: STROKE, shadow: Shadow({ color: Color$.ToColor('#a83535'), blur: 10, enabled: true }) })),
     SymbolDefinition('circle', CircleItem({ radius: 25, brush: SolidBrush(Color$.ToColor('#a6ad45')), stroke: STROKE, shadow: Shadow({ color: Color$.ToColor('#a6ad45'), blur: 10, enabled: true }) })),
@@ -35,13 +36,11 @@ export default class extends Vue {
   selected = 0
   handle = null as number | null
   symbols = Generic.Clone(INITS).map(coordinate => SymbolItem({ key: this.definitions[this.selected].key, coordinate }))
+  counter = 0
 
   get buttons() {
-    return this.definitions.map((definition, index) => {
-      let button = Generic.Clone(definition.definition)
-      button.coordinate.position = Point(-150 + 100 * index, index < 4 ? 0 : 20)
-      return button
-    })
+    let average = this.size.width / 7
+    return this.definitions.map((definition, index) => SymbolItem({ key: definition.key, coordinate: Coordinate({ position: Point(-(average * 2) + average * index, index < 4 ? 0 : 5) }) }))
   }
 
   Select(index: number) {
@@ -63,6 +62,10 @@ export default class extends Vue {
           s.coordinate.position = Generic.Clone(pivot)
         }
         s.coordinate.rotation += Math.random() * Math.PI / 6
+        if (this.counter++ % 4000 === 3999) {
+          this.Select((this.selected + 1) % this.definitions.length)
+          this.counter = 0
+        }
       })
     }, 1000 / 16)
   }
@@ -74,7 +77,4 @@ export default class extends Vue {
     }
   }
 }
-
-export const Description = 'Fully support for paper.js shapes, symbol, and group item. DEMO HINT: Click shapes.'
-
 </script>

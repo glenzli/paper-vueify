@@ -26,7 +26,4 @@ export default class extends Vue {
     this.parade = !this.parade
   }
 }
-
-export const Description = 'Using vue components make the canvas drawing modularized, component based drawing is easier to control in relative-large project. DEMO HINT: Click red dot.'
-
 </script>

@@ -1,7 +1,9 @@
 module.exports = {
   publicPath: './',
   chainWebpack: config => {
-    config.externals({
+    console.log(process.env.VUE_APP_DEMO)
+    if (process.env.VUE_APP_DEMO === 'OFF') {
+      config.externals({
       'arrayex': 'arrayex',
       'direct-object': 'direct-object',
       'paper': 'paper',
@@ -10,5 +12,6 @@ module.exports = {
       'vue-class-component': 'vue-class-component',
       'vue-property-decorator': 'vue-property-decorator'
     })
+    }
   }
 }

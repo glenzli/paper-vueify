@@ -6,8 +6,11 @@
 import paper from 'paper'
 import { Component, Mixins, Vue, Prop, Watch } from 'vue-property-decorator'
 import { GetItemTypename, PaperItemRenderer, PaperItemObject } from '../model'
+import { BasicComponents} from './components'
 
-@Component
+@Component({
+  components: BasicComponents,
+})
 export default class PSymbolDefinition extends Vue {
   @Prop({ required: true }) element!: PaperItemObject
 
