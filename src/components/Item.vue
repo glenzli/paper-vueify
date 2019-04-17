@@ -11,7 +11,7 @@ import { BasicComponents} from './components'
 @Component({
   components: BasicComponents,
 })
-export default class PSymbolDefinition extends Vue {
+export default class PItem extends Vue {
   @Prop({ required: true }) element!: PaperItemObject
 
   get component() {

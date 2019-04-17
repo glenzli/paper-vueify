@@ -9,7 +9,7 @@ export interface SegmentObject {
   handleOut: PointObject,
 }
 
-interface PathContextObject {
+export interface PathContextObject {
   segments: Array<SegmentObject>,
 }
 

@@ -6,9 +6,10 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name paper-vueify ./src/lib.ts",
     "lint": "vue-cli-service lint",
-    "demo": "cross-env BUILD_DEMO=1 && vue-cli-service build --dest docs --mode development"
+    "demo": "vue-cli-service build --dest docs --mode development"
   },
   "main": "./dist/paper-vueify.umd.js",
+  "typings": "dist/types/index.d.ts",
   "dependencies": {
     "arrayex": "^1.0.1",
     "core-js": "^2.6.5",
@@ -18,6 +19,7 @@
     "vue-highlightjs": "^1.3.3"
   },
   "devDependencies": {
+    "@types/highlight.js": "^9.12.3",
     "@types/paper": "^0.11.10",
     "@vue/cli-plugin-babel": "^3.5.0",
     "@vue/cli-plugin-typescript": "^3.5.0",

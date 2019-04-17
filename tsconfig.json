@@ -10,6 +10,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
+    "declaration": true,
     "baseUrl": ".",
     "types": [
       "webpack-env"
@@ -19,6 +20,10 @@
         "src/*"
       ]
     },
+    "typeRoots": [
+      "node_modules/@types",
+      "@types"
+    ],
     "lib": [
       "esnext",
       "dom",
