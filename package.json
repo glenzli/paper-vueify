@@ -1,6 +1,6 @@
 {
   "name": "paper-vueify",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "luz-alphacode <luz_alphacode@outlook.com>",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -9,7 +9,7 @@
     "demo": "vue-cli-service build --dest docs --mode development"
   },
   "main": "./dist/paper-vueify.umd.js",
-  "typings": "dist/types/index.d.ts",
+  "typings": "dist/types/lib.d.ts",
   "dependencies": {
     "arrayex": "^1.0.1",
     "core-js": "^2.6.5",
