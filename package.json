@@ -1,6 +1,6 @@
 {
   "name": "paper-vueify",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "luz-alphacode <luz_alphacode@outlook.com>",
   "scripts": {
     "serve": "vue-cli-service serve",
