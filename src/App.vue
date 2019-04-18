@@ -157,7 +157,7 @@ html, body {
 
       .up {
         position: absolute;
-        top: 35%;
+        top: 25%;
         left: 50%;
         transform: translate(-50%, -50%);
       }
