@@ -10,6 +10,9 @@
       </div>
       <div class="canvas-section">
         <p-canvas :autosize="true" @resize="OnResize"></p-canvas>
+        <div v-if="mobileLayout" class="up" @click="Up">
+          <div class="arrow"></div>
+        </div>
       </div>
     </div>
     <component :is="demo" :size="canvasSize" class="zero"></component>
@@ -53,6 +56,10 @@ export default class App extends Vue {
     } else {
       this.mobileLayout = false
     }
+  }
+
+  Up() {
+    window.scrollTo(0, 0)
   }
 }
 </script>
@@ -146,6 +153,24 @@ html, body {
     .canvas-section {
       height: 100%;
       min-height: 60rem;
+      position: relative;
+
+      .up {
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .arrow {
+        height: 0;
+        width: 0;
+        border: 2rem solid #ccc;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        border-top: none;
+        opacity: 0.5;
+      }
     }
   }
 }
