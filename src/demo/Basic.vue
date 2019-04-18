@@ -50,6 +50,7 @@ export default class extends Vue {
       s.key = this.definitions[index].key
       s.coordinate.position = Generic.Clone(pivot)
     })
+    this.counter = 0
   }
 
   mounted() {
@@ -64,7 +65,6 @@ export default class extends Vue {
         s.coordinate.rotation += Math.random() * Math.PI / 6
         if (this.counter++ % 4000 === 3999) {
           this.Select((this.selected + 1) % this.definitions.length)
-          this.counter = 0
         }
       })
     }, 1000 / 16)
