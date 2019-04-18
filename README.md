@@ -26,6 +26,7 @@ In demo folder, you can see some basic plays with **paper-vueify**. With the dat
 ```sh
 npm run demo
 ```
+![Preview](/public/preview.jpg)
 The demos come with the docs of this project, You can view the demos on my [Github Pages](https://luz-alphacode.github.io/paper-vueify/).
 
 
