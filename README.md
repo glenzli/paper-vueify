@@ -6,7 +6,11 @@
 The recommended way to install and maintain paper-vueify in your project is through the Node.js Pacakge Manager (NPM), simply type the npm command in your project folder:
 
 ```sh
-npm install paper-vueifyw
+npm install --save paper-vueify
+```
+If you are using typescript environment, you may also need to install paper's declaration files:
+```sh
+npm install --save-dev @types/paper
 ```
 
 ## Usage
