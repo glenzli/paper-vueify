@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import { Color$, SolidBrush, Point, Coordinate, Stroke, PointObject, Shadow } from '../../core'
+import { Color$, SolidBrush, Point, Coordinate, Stroke, PointObject, Shadow } from 'paper-vueify-datatypes'
 import { PolygonItem, CircleItem, GroupItem, PolylineItem } from '../../model'
 
 const MARK_BRUSHES = [

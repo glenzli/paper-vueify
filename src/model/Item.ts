@@ -1,5 +1,5 @@
 import paper from 'paper'
-import { CoordinateObject, Coordinate, Coordinate$ } from '@/core'
+import { CoordinateObject, Coordinate, Coordinate$ } from 'paper-vueify-datatypes'
 import { $iMap } from './IMap'
 
 export interface PaperItemObject {

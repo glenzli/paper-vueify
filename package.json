@@ -13,10 +13,11 @@
   "typings": "dist/types/lib.d.ts",
   "keywords": [],
   "dependencies": {
-    "arrayex": "^1.0.1",
+    "arrayex": "^1.0.6",
     "core-js": "^2.6.5",
-    "direct-object": "^1.0.5",
+    "direct-object": "^1.0.7",
     "paper": "^0.12.0",
+    "paper-vueify-datatypes": "^1.0.0",
     "vue": "^2.6.6",
     "vue-highlightjs": "^1.3.3"
   },

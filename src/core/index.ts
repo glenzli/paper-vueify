@@ -1,6 +1,0 @@
-export * from './Point'
-export * from './Coordinate'
-export * from './Color'
-export * from './Brush'
-export * from './Stroke'
-export * from './Shadow'

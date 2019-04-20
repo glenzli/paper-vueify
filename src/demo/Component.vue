@@ -8,7 +8,7 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
 import Tadpole from './component/Tadpole.vue'
-import { Point, Stroke, SolidBrush, Color$, Shadow } from '../core'
+import { Point, Stroke, SolidBrush, Color$, Shadow } from 'paper-vueify-datatypes'
 import { CircleItem } from '../model'
 
 @Component({

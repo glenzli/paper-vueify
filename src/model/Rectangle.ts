@@ -1,6 +1,6 @@
 import paper from 'paper'
 import { ShapeItemObject, ShapeItemRenderer, ShapeItem } from './Shape'
-import { PointObject, Point } from '@/core'
+import { PointObject, Point } from 'paper-vueify-datatypes'
 import { RegisterItemType } from './Item'
 
 export interface RectangleItemObject extends ShapeItemObject {

@@ -8,7 +8,7 @@
 import paper, { Color } from 'paper'
 import { Component, Vue, Prop } from 'vue-property-decorator'
 import { Arrayex } from 'arrayex'
-import { Point } from '../core'
+import { Point } from 'paper-vueify-datatypes'
 import DataMark from './component/DataMark.vue'
 
 @Component({

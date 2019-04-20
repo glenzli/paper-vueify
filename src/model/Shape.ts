@@ -1,6 +1,6 @@
 import paper from 'paper'
 import { PaperItemObject, PaperItem, PaperItemRenderer } from './Item'
-import { BrushObject, StrokeObject, ShadowObject, Stroke$, Brush$, Shadow$, SolidBrush, Stroke, Shadow } from '@/core'
+import { BrushObject, StrokeObject, ShadowObject, Stroke$, Brush$, Shadow$, SolidBrush, Stroke, Shadow } from 'paper-vueify-datatypes'
 
 export interface ShapeItemObject extends PaperItemObject {
   brush: BrushObject,

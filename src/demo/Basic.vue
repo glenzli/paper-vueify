@@ -10,7 +10,7 @@
 import { Component, Vue, Prop } from 'vue-property-decorator'
 import { DirectMap, DirectMapObject, Generic } from 'direct-object'
 import { RectangleItem, CircleItem, RegularPolygonItem, StarItem, PaperGraphic$, PaperItemObject, SymbolItem, SymbolDefinition, PointTextItem } from '../model'
-import { Point, SolidBrush, Color$, Coordinate, Stroke, Shadow, Point$ } from '../core'
+import { Point, SolidBrush, Color$, Coordinate, Stroke, Shadow, Point$ } from 'paper-vueify-datatypes'
 
 const RADIUS = 400
 

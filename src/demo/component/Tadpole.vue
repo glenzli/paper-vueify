@@ -7,7 +7,7 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
 import { EllipseItem, PolylineItem, GroupItem } from '../../model'
-import { Point, SolidBrush, Color$, Coordinate, PointObject, Point$, Shadow } from '../../core'
+import { Point, SolidBrush, Color$, Coordinate, PointObject, Point$, Shadow } from 'paper-vueify-datatypes'
 
 @Component
 export default class extends Vue {

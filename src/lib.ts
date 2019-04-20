@@ -1,4 +1,4 @@
-export * from './core'
+export * from 'paper-vueify-datatypes'
 export * from './model'
 export * from './components'
 

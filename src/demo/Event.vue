@@ -12,7 +12,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator'
 import { PaperGraphic$, PolylineItem, PolygonItemObject, PolygonItem, CircleItem, RectangleItem, PaperItemObject, PaperItemRenderer, SymbolItem, SymbolDefinition } from '../model'
 import { Arrayex } from 'arrayex'
 import { Generic } from 'direct-object'
-import { Point, Stroke, Brush$, Coordinate, SolidBrush, Color$, Shadow, StrokeJoin, StrokeCap, NoneBrush, Point$, PointObject } from '../core'
+import { Point, Stroke, Brush$, Coordinate, SolidBrush, Color$, Shadow, StrokeJoin, StrokeCap, NoneBrush, Point$, PointObject } from 'paper-vueify-datatypes'
 
 const RADIUS = 20
 

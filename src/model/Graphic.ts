@@ -1,6 +1,6 @@
 import paper from 'paper'
 import { PathItem } from './Path'
-import { Brush$, Point$, Stroke$, Shadow$ } from '@/core'
+import { Brush$, Point$, Stroke$, Shadow$ } from 'paper-vueify-datatypes'
 import { PaperItemObject, PaperItemRenderer } from './Item'
 import { Generic } from 'direct-object'
 import { $iMap } from './IMap'
