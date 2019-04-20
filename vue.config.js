@@ -26,6 +26,7 @@ module.exports = {
         'arrayex': 'arrayex',
         'direct-object': 'direct-object',
         'paper': 'paper',
+        'paper-vueify-datatypes': 'paper-vueify-datatypes',
         'vue': 'vue',
         'core-js': 'core-js',
         'vue-class-component': 'vue-class-component',
