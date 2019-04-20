@@ -11,7 +11,7 @@
   },
   "main": "./dist/paper-vueify.umd.js",
   "typings": "dist/types/lib.d.ts",
-  "keywords": [],
+  "keywords": ["paper", "vue", "canvas"],
   "dependencies": {
     "arrayex": "^1.0.6",
     "core-js": "^2.6.5",
