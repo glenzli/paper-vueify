@@ -20,7 +20,6 @@
 </template>
 
 <script lang="ts">
-import paper from 'paper'
 import { Component, Vue } from 'vue-property-decorator'
 import { Demos } from './demo'
 import { DemoDocs } from './demodoc'
@@ -43,7 +42,7 @@ export default class App extends Vue {
   }
 
   Select(index: number) {
-    paper.project.activeLayer.removeChildren()
+    this.$paper.project.activeLayer.removeChildren()
     this.selected = index
   }
 

@@ -1,6 +1,6 @@
 {
   "name": "paper-vueify",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "author": "luz-alphacode <luz_alphacode@outlook.com>",
   "description": "A vue adaptation of paper.js",
   "scripts": {

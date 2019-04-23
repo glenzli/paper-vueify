@@ -18,10 +18,12 @@ Vue only works properly with plain object, the library comes with a series of re
 <br/>To use paper-vueify, you may import component manually or use the installer to register all the components.
 ```javascript
 import Vue from 'vue'
+import paper from 'paper'
 import PaperVueify from 'paper-vueify'
 
 // the install process register 3 components into the global scope, p-canvas, p-item and p-symbol-definition
-Vue.use(PaperVueify)
+// the secondary parameter paper is to register your paper variable in current scope, or there will be two seperated PaperScope and the p-canvas will not work properly.
+Vue.use(PaperVueify, paper)
 ```
 
 ## Demo and Doc
