@@ -1,7 +1,7 @@
 import paper from 'paper'
 import Vue from 'vue'
 import { Component, Prop, Watch } from 'vue-property-decorator'
-import { PaperItemObject, $iMap, PaperItemRenderer, PaperItem, GetItemType } from '@/model'
+import { PaperItemObject, $iMap, PaperItemRenderer, GetItemType } from '../model'
 
 @Component
 export class BasicMixin extends Vue {

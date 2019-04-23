@@ -1,9 +1,6 @@
 import paper from 'paper'
 import { PathItem } from './Path'
 import { Brush$, Point$, Stroke$, Shadow$ } from 'paper-vueify-datatypes'
-import { PaperItemObject, PaperItemRenderer } from './Item'
-import { Generic } from 'direct-object'
-import { $iMap } from './IMap'
 
 export namespace PaperGraphic$ {
   function FromSegment(segment: paper.Segment) {
@@ -32,10 +29,4 @@ export namespace PaperGraphic$ {
       })
     }
   }
-
-  // export function Clone(item: PaperItemObject, exlcudes: Array<string> = []) {
-  //   let clone = Generic.Clone(item, { deepExcludes: exlcudes })
-  //   let originRenderer = $iMap.Get<PaperItemRenderer>(clone.id)!
-  //   return new (originRenderer.constructor as new(e: PaperItemObject) => PaperItemRenderer)(clone).element
-  // }
 }
