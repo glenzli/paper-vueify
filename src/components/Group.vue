@@ -1,16 +1,20 @@
 <template>
   <div>
-    <p-item v-for="(child, index) in element.children" :key="index" :element="child" @draw="OnDrawed"></p-item>
+    <p-item v-for="(child, index) in group.children" :key="index" :element="child" @draw="OnDrawed"></p-item>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator'
-import { GroupItem, $iMap, GroupItemRenderer } from '../model'
+import { GroupItem, $iMap, GroupItemRenderer, GroupItemObject } from '../model'
 import { BasicMixin } from './Basic'
 
 @Component
 export default class PGroup extends Mixins(BasicMixin) {
+  get group() {
+    return this.element as GroupItemObject
+  }
+
   OnDrawed(cid: number) {
     let renderer = $iMap.Get<GroupItemRenderer>(this.rendererId)
     if (!renderer) {
@@ -18,10 +22,10 @@ export default class PGroup extends Mixins(BasicMixin) {
     }
     let cRenderer = $iMap.Get<GroupItemRenderer>(cid)
     if (cRenderer) {
-      renderer.visual.addChild(cRenderer.visual)
+      if (renderer.visual.parent !== cRenderer.visual) {
+        renderer.visual.addChild(cRenderer.visual)
+      }
     }
   }
 }
 </script>
-
-
