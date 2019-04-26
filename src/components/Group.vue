@@ -22,7 +22,7 @@ export default class PGroup extends Mixins(BasicMixin) {
     }
     let cRenderer = $iMap.Get<GroupItemRenderer>(cid)
     if (cRenderer) {
-      if (renderer.visual.parent !== cRenderer.visual) {
+      if (cRenderer.visual.parent !== renderer.visual) {
         renderer.visual.addChild(cRenderer.visual)
       }
     }
