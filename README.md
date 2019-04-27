@@ -92,8 +92,85 @@ let radialBrush = RadialBrush({
 The **Brush$** util is written for another project and useless in this project, you may ignored it.
 
 ### Stroke
-To be continued.
+**StrokeObject** is a plain object version of stroke related props in paper.js. I defined two enum, **StrokeJoin** and **StrokeCap** for join and cap parameter.
+```javascript
+export interface StrokeObject {
+  brush: BrushObject,
+  thickness: number,
+  dash: Array<number>,
+  join: StrokeJoin,
+  cap: StrokeCap,
+  miterLimit: number,
+  dashOffset: number,
+}
 
+let stroke = ({ })
+```
+
+### Shadow
+**ShadowObject** is same as stroke, you have notice that a **ShadowObject** has enabled parameter, only with enabled set to true, the shadow is interpreted (This design has historic reason because of another project).
+```javascript
+export type ShadowObject = {
+  color: ColorObject,
+  blur: number,
+  offset: PointObject,
+  enabled: boolean,
+}
+
+let shadow = ({ })
+```
+
+### Coordinate
+In paper.js, we use matrix parameter, but the matrix is not user-friendly. I convert the matrix to a standard **CoordinateObject**, you can use **Coordinate$** util to convert from each other. Every angle in **paper-vueify** is in **radian**.
+```javascript
+let coordinate = Coordinate({
+  position: Point(0, 0),
+  scale: Point(0, 0),
+  rotation: 0,
+  skewX: 0,
+})
+
+let matrix = Coordinate$.ToMatrix(coordinate)
+```
+
+### Item
+Every drawable item in paper-vueify has following property
+```javascript
+export interface PaperItemObject {
+  coordinate: CoordinateObject,
+  opacity: number,
+  visible: boolean,
+}
+```
+If the item is a Shape, it also have
+```javascript
+export interface ShapeItemObject extends PaperItemObject {
+  brush: BrushObject,
+  stroke: StrokeObject,
+  shadow: ShadowObject,
+}
+```
+If the item is a Group, it also have
+```javascript
+export interface GroupItemObject extends PaperItemObject {
+  children: Array<PaperItemObject>
+}
+```
+Or for symbol definition and symbol
+```javascript
+export interface SymbolDefinitionObject {
+  key: string,
+  definition: PaperItemObject,
+}
+
+export interface SymbolItemObject extends PaperItemObject {
+  key: string,
+}
+```
+Here is a list of primitive shapes
+```javascript
+// To be continued
+```
 
 ## License
 Distributed under the MIT license. See [LICENSE](https://github.com/luz-alphacode/paper-vueify/blob/master/LICENSE) for detail.
