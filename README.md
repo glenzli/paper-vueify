@@ -36,7 +36,7 @@ npm run demo
 The demos come with the docs of this project, You can view the demos on my [Github Pages](https://luz-alphacode.github.io/paper-vueify/).
 
 ## Api
-The demo has showed the basic use of this library. Here I will list a simple API reference doc.
+The demo has demonstrated the basic usage of this library. Here I will list some api stuff.
 ### Point
 The library comes with a simple **PointObject** interface, with a **Point** and a **PolarPoint** function to create it (plain object).
 ```javascript
@@ -49,7 +49,7 @@ There is a **Point$** util for point operations, almost every function name is s
 <br/>**Purify(point)** converts a point instance (like paper.Point) to plain object, which is good for vue usage.
 
 ### Color
-There is a **ColorObject** with each component is normalized, thus, every channel in this object is ranged in [0, 1]. There is a **Color** function to create it. You can also use **HsvColor** function to create a **HsvColorObject**, which is the hsv color-space represtation of color (also normalized). You can use functions in **Color$** util to convert from one to another.
+**ColorObject** is a rgb color structure with each channel normalized to [0, 1]. There is a **Color** function to create it. You can also use **HsvColor** function to create a **HsvColorObject**, which is the hsv color-space represtation of color (also normalized). You can use functions in **Color$** util to convert from one to another.
 ```javascript
 export type ColorObject = { red: number, green: number, blue: number, alpha: number }
 export type HsvColorObject = { hue: number, saturation: number, value: number, alpha: number }

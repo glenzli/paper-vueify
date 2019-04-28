@@ -7,11 +7,17 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name paper-vueify ./src/lib.ts",
     "lint": "vue-cli-service lint",
-    "demo": "vue-cli-service build --dest docs --mode development"
+    "demo": "vue-cli-service build --dest docs --mode development",
+    "docs:dev": "vuepress dev dev-docs",
+    "docs:build": "vuepress build dev-docs"
   },
   "main": "./dist/paper-vueify.umd.js",
   "typings": "dist/types/lib.d.ts",
-  "keywords": ["paper", "vue", "canvas"],
+  "keywords": [
+    "paper",
+    "vue",
+    "canvas"
+  ],
   "dependencies": {
     "arrayex": "^1.0.6",
     "core-js": "^2.6.5",
@@ -33,7 +39,8 @@
     "typescript": "^3.2.1",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^8.0.0",
-    "vue-template-compiler": "^2.5.21"
+    "vue-template-compiler": "^2.5.21",
+    "vuepress": "^0.14.11"
   },
   "files": [
     "dist"

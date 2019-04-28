@@ -3,6 +3,7 @@
     <div class="title">Paper-Vueify: Demo</div>
     <div class="menu">
       <div v-for="(name, index) in names" :key="index" class="item" :class="{ selected: index === selected }" @click="Select(index)">{{name}}</div>
+      <div class="item" @click="Jump">Api Manual</div>
     </div>
     <div class="stage" :class="{ mobile: mobileLayout }">
       <div class="code-section" :class="{ normal: !mobileLayout }">
@@ -59,6 +60,10 @@ export default class App extends Vue {
 
   Up() {
     window.scrollTo(0, 0)
+  }
+
+  Jump() {
+    window.location.href = '/api'
   }
 }
 </script>
