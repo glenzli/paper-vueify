@@ -7,7 +7,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name paper-vueify ./src/lib.ts",
     "lint": "vue-cli-service lint",
-    "demo": "vue-cli-service build --dest docs --mode development",
+    "demo:build": "vue-cli-service build --dest docs --mode development",
     "docs:dev": "vuepress dev dev-docs",
     "docs:build": "vuepress build dev-docs"
   },

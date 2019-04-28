@@ -63,7 +63,7 @@ export default class App extends Vue {
   }
 
   Jump() {
-    window.location.href = '/api'
+    window.location.href = './api'
   }
 }
 </script>
