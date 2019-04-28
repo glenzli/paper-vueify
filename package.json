@@ -7,7 +7,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name paper-vueify ./src/lib.ts",
     "lint": "vue-cli-service lint",
-    "demo:build": "vue-cli-service build --dest docs --mode development",
+    "demo:build": "cross-env DEMO_TARGET=true vue-cli-service build --dest docs && vuepress build dev-docs",
     "docs:dev": "vuepress dev dev-docs",
     "docs:build": "vuepress build dev-docs"
   },
@@ -33,6 +33,7 @@
     "@vue/cli-plugin-babel": "^3.5.0",
     "@vue/cli-plugin-typescript": "^3.5.0",
     "@vue/cli-service": "^3.5.0",
+    "cross-env": "^5.2.0",
     "highlight.js": "^9.15.6",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
