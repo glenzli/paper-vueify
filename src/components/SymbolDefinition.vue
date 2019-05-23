@@ -4,7 +4,8 @@
 
 <script lang="ts">
 import paper from 'paper'
-import { Component, Mixins, Vue, Prop, Watch } from 'vue-property-decorator'
+import Vue from 'vue'
+import { Component, Mixins, Prop, Watch } from 'vue-property-decorator'
 import { DirectMap } from 'direct-object'
 import { SymbolItemObject, SymbolDefinitionObject, GetItemTypename, $iMap, PaperItemRenderer } from '../model'
 import { BasicComponents} from './components'
