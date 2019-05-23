@@ -1,15 +1,16 @@
 {
   "name": "paper-vueify",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "luz-alphacode <luz_alphacode@outlook.com>",
   "description": "A vue adaptation of paper.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name paper-vueify ./src/lib.ts",
     "lint": "vue-cli-service lint",
-    "demo:build": "cross-env DEMO_TARGET=true vue-cli-service build --dest docs && vuepress build dev-docs",
-    "docs:dev": "vuepress dev dev-docs",
-    "docs:build": "vuepress build dev-docs"
+    "build:demo": "cross-env DEMO_TARGET=true vue-cli-service build --dest gh-pages && vuepress build docs",
+    "serve:docs": "vuepress dev docs",
+    "build:docs": "vuepress build docs",
+    "test": "jest"
   },
   "main": "./dist/paper-vueify.umd.js",
   "typings": "dist/types/lib.d.ts",
@@ -29,16 +30,22 @@
   },
   "devDependencies": {
     "@types/highlight.js": "^9.12.3",
+    "@types/jest": "^24.0.12",
     "@types/paper": "^0.11.10",
     "@vue/cli-plugin-babel": "^3.5.0",
     "@vue/cli-plugin-typescript": "^3.5.0",
     "@vue/cli-service": "^3.5.0",
+    "@vue/test-utils": "^1.0.0-beta.29",
     "cross-env": "^5.2.0",
     "highlight.js": "^9.15.6",
+    "jest": "^24.8.0",
+    "jest-canvas-mock": "^2.0.0",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
+    "ts-jest": "^24.0.2",
     "typescript": "^3.2.1",
     "vue-class-component": "^6.0.0",
+    "vue-jest": "^3.0.4",
     "vue-property-decorator": "^8.0.0",
     "vue-template-compiler": "^2.5.21",
     "vuepress": "^0.14.11"
@@ -54,5 +61,30 @@
     "url": "https://github.com/luz-alphacode/paper-vueify/issues"
   },
   "homepage": "https://github.com/luz-alphacode/paper-vueify#readme",
-  "license": "MIT"
+  "license": "MIT",
+  "jest": {
+    "setupFiles": [
+      "jest-canvas-mock"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "vue-jest",
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 50,
+        "functions": 60,
+        "lines": 50,
+        "satements": 50
+      }
+    }
+  }
 }

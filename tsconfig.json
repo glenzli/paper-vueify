@@ -14,7 +14,8 @@
     "declarationDir": "dist/types",
     "baseUrl": ".",
     "types": [
-      "webpack-env"
+      "webpack-env",
+      "jest"
     ],
     "paths": {
       "@/*": [

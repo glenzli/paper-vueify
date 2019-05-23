@@ -107,10 +107,11 @@ interface SegmentObject {
 
 interface PathItemObject extends ShapeItemObject {
   segments?: SegmentObject[],
-  children?: Array<{ segments: SegmentObject[] }>,
+  children?: Array<{ segments: SegmentObject[], closed?: boolean }>,
   closed: boolean,
 }
 let path = Path({ segments, closed, ... })
+// If the closed property of a child path is missing, the parent closed property is used
 let compoundPath = Path({ children, closed, ... })
 // import { PaperGraphic$ } from 'paper-vueify'
 let pathFrom = PaperGraphic$.From(somePath/* paper.Path | paper.CompoundPath */)

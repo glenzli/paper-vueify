@@ -29,9 +29,12 @@ module.exports = {
           'paper': 'paper',
           'paper-vueify-datatypes': 'paper-vueify-datatypes',
           'vue': 'vue',
-          'core-js': 'core-js',
-          'vue-class-component': 'vue-class-component',
-          'vue-property-decorator': 'vue-property-decorator'
+          'core-js': 'core-js'
+        })
+      } else {
+        config.externals({
+          'paper': 'paper',
+          'vue': 'Vue',
         })
       }
     }

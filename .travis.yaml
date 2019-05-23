@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - "10"
+
+script:
+  - npm run test
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then npm run build:demo; fi
+
+after_success:
+  - codecov
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GH_TOKEN
+  keep_history: true
+  local_dir: gh-pages
+  target-branch: gh-pages
+  on:
+    branch: master

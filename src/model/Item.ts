@@ -26,7 +26,7 @@ export class PaperItemRenderer {
   }
 
   protected InitVisual() {
-    this._visual = new paper.Path()
+    this._visual = new paper.Path({ applyMatrix: false })
   }
 
   get id() {
@@ -38,7 +38,7 @@ export class PaperItemRenderer {
   }
 
   protected RenderVisual(element: PaperItemObject): paper.Item | null {
-    return new paper.Path()
+    return new paper.Path({ applyMatrix: false })
   }
 
   protected Hook() {

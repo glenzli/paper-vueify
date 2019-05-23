@@ -1,4 +1,8 @@
 # paper-vueify
+![Build State](https://img.shields.io/travis/luz-alphacode/paper-vueify.svg?style=flat-square)
+![Coverage](https://img.shields.io/codecov/c/github/luz-alphacode/paper-vueify.svg?style=flat-square)
+![License](https://img.shields.io/github/license/luz-alphacode/paper-vueify.svg?color=%23333&style=flat-square)
+![Version](https://img.shields.io/github/package-json/v/luz-alphacode/paper-vueify.svg?style=flat-square)
 ## Introduction
 **Paper.js** is a very useful tool for creating complicate canvas shapes and animations. But using paper.js for tasks such as data visualiztion is not very convenient, and could produce many redundant code lines. On the other hand, **Vue** is data-driven framework and it's extremely friendly to data related operations. By combining these two powerful tools result a really nice workflow for data visualization and lightweight data-driven animation editing. That's the purpose of **paper-vueify**.
 
@@ -30,7 +34,7 @@ Vue.use(PaperVueify, paper)
 In demo folder, you can see some basic plays with **paper-vueify**. With the data-reactive framework, it's easy to create very complicate canvas structure and animation (Though, it's not very suitable for very large scale graphic project).
 <br/>Use following command to build demo into the docs folder (for github pages).
 ```sh
-npm run demo:build
+npm run build:demo
 ```
 ![Preview](/public/preview.jpg)
 The demos come with the docs of this project, You can view the demos on my [Github Pages](https://luz-alphacode.github.io/paper-vueify/).

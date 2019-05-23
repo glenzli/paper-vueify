@@ -1,6 +1,6 @@
 module.exports = {
   base: '/paper-vueify/api',
-  dest: 'docs/api',
+  dest: 'gh-pages/api',
   title: 'Paper Vueify',
   descritpion: 'Api Document for Paper Vueify',
   themeConfig: {
