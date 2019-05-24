@@ -1,9 +1,10 @@
-import { Component, Watch, Mixins } from 'vue-property-decorator'
+import { mixins } from 'vue-class-component'
+import { Component, Watch } from 'vue-property-decorator'
 import { BasicMixin } from './Basic'
 import { $iMap, ShapeItemRenderer, ShapeItemObject } from '../model'
 
 @Component
-export class ShapeMixin extends Mixins(BasicMixin) {
+export class ShapeMixin extends mixins(BasicMixin) {
   get style() {
     let element = this.element as ShapeItemObject
     return {

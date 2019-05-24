@@ -5,7 +5,7 @@
 <script lang="ts">
 import paper from 'paper'
 import Vue from 'vue'
-import { Component, Mixins, Prop, Watch } from 'vue-property-decorator'
+import { Component, Prop, Watch } from 'vue-property-decorator'
 import { GetItemTypename, PaperItemRenderer, PaperItemObject } from '../model'
 import { BasicComponents} from './components'
 

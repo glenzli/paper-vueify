@@ -5,12 +5,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Mixins } from 'vue-property-decorator'
+import { mixins } from 'vue-class-component'
+import { Component } from 'vue-property-decorator'
 import { GroupItem, $iMap, GroupItemRenderer, GroupItemObject } from '../model'
 import { BasicMixin } from './Basic'
 
 @Component
-export default class PGroup extends Mixins(BasicMixin) {
+export default class PGroup extends mixins(BasicMixin) {
   get group() {
     return this.element as GroupItemObject
   }

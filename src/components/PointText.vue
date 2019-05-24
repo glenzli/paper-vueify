@@ -3,12 +3,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Mixins } from 'vue-property-decorator'
+import { mixins } from 'vue-class-component'
+import { Component } from 'vue-property-decorator'
 import { ShapeMixin } from './Shape'
 import { PointTextItemObject } from '../model'
 
 @Component
-export default class PPointText extends Mixins(ShapeMixin) {
+export default class PPointText extends mixins(ShapeMixin) {
   get context() {
     let element = this.element as PointTextItemObject
     return {

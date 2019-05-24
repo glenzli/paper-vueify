@@ -1,6 +1,6 @@
 {
   "name": "paper-vueify",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "author": "luz-alphacode <luz_alphacode@outlook.com>",
   "description": "A vue adaptation of paper.js",
   "scripts": {
@@ -44,10 +44,10 @@
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
     "ts-jest": "^24.0.2",
-    "typescript": "^3.2.1",
-    "vue-class-component": "^6.0.0",
+    "typescript": "^3.4.5",
+    "vue-class-component": "^7.1.0",
     "vue-jest": "^3.0.4",
-    "vue-property-decorator": "^8.0.0",
+    "vue-property-decorator": "^8.1.1",
     "vue-template-compiler": "^2.5.21",
     "vuepress": "^0.14.11"
   },
