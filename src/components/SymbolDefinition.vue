@@ -22,15 +22,15 @@ export default class PSymbolDefinition extends Vue {
 
   OnDrawed(rendererId: number) {
     let renderer = $iMap.Get<PaperItemRenderer>(rendererId)!
-    let symbol = $iMap.Get<paper.Symbol>(this.element.key)
+    let symbol = $iMap.Get<paper.SymbolDefinition>(this.element.key)
     if (!symbol) {
-      symbol = new paper.Symbol(new paper.Path())
+      symbol = new paper.SymbolDefinition(new paper.Path())
       $iMap.Bind(this.element.key, symbol)
     }
-    if (!symbol.definition) {
-      symbol.definition!.remove()
+    if (!symbol.item) {
+      symbol.item!.remove()
     }
-    symbol.definition = renderer.visual
+    symbol.item = renderer.visual
   }
 
   @Watch('element.key')

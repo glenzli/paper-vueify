@@ -4,7 +4,7 @@
 ![License](https://img.shields.io/github/license/luz-alphacode/paper-vueify.svg?color=%23333&style=flat-square)
 ![Version](https://img.shields.io/github/package-json/v/luz-alphacode/paper-vueify.svg?style=flat-square)
 ## Introduction
-**Paper.js** is a very useful tool for creating complicate canvas shapes and animations. But using paper.js for tasks such as data visualiztion is not very convenient, and could produce many redundant code lines. On the other hand, **Vue** is data-driven framework and it's extremely friendly to data related operations. By combining these two powerful tools result a really nice workflow for data visualization and lightweight data-driven animation editing. That's the purpose of **paper-vueify**.
+**Paper.js** is a very useful tool for creating complicate canvas shapes and animations. But using paper.js for tasks such as data visualiztion is not very convenient, and could produce many redundant code lines. On the other hand, **Vue** is data-driven framework and it's extremely friendly to data related operations. By combining these two powerful tools result a really nice workflow for data visualization and lightweight data-driven animation editing. That's the purpose of **paper-vueify**. **paper-vueify** is updated with the new official decalartions of **paper.js**.
 
 ## Install
 The recommended way to install and maintain paper-vueify in your project is through the Node.js Pacakge Manager (NPM), simply type the npm command in your project folder:

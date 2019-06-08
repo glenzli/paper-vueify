@@ -28,16 +28,16 @@ export default class PCanvas extends Vue {
   }
 
   Hook() {
-    let on = (type: string, event: paper.MouseEvent | paper.IFrameEvent | paper.KeyEvent) => { this.$emit(type, event) }
-    this.$paper.view.onClick = e => on('click', e)
-    this.$paper.view.onDoubleClick = e => { on('doubleclick', e) }
-    this.$paper.view.onMouseDown = e => { on('mousedown', e) }
-    this.$paper.view.onMouseDrag = e => { on('mousedrag', e) }
-    this.$paper.view.onMouseEnter = e => { on('mouseenter', e) }
-    this.$paper.view.onMouseLeave = e => { on('mouseleave', e) }
-    this.$paper.view.onMouseMove = e => { on('mousemove', e) }
-    this.$paper.view.onMouseUp = e => { on('mouseup', e) }
-    this.$paper.view.onFrame = e => { on('frame', e) }
+    let on = (type: string, event: paper.Event) => { this.$emit(type, event) }
+    this.$paper.view.onClick = (e: paper.Event) => on('click', e)
+    this.$paper.view.onDoubleClick = (e: paper.Event) => { on('doubleclick', e) }
+    this.$paper.view.onMouseDown = (e: paper.Event) => { on('mousedown', e) }
+    this.$paper.view.onMouseDrag = (e: paper.Event) => { on('mousedrag', e) }
+    this.$paper.view.onMouseEnter = (e: paper.Event) => { on('mouseenter', e) }
+    this.$paper.view.onMouseLeave = (e: paper.Event) => { on('mouseleave', e) }
+    this.$paper.view.onMouseMove = (e: paper.Event) => { on('mousemove', e) }
+    this.$paper.view.onMouseUp = (e: paper.Event) => { on('mouseup', e) }
+    this.$paper.view.onFrame = (e: paper.Event) => { on('frame', e) }
   }
 
   mounted() {

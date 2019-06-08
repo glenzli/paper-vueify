@@ -1,9 +1,8 @@
 import paper from 'paper'
-import { PaperItem, PaperItemRenderer, RegisterItemType, GetItemTypename, GetItemType } from '../Item'
-import { $iMap } from '../IMap'
+import { PaperItem, PaperItemRenderer, RegisterItemType, GetItemTypename, GetItemType } from '../model/Item'
+import { $iMap } from '../model/IMap'
 
-const canvas = document.createElement('canvas')
-paper.setup(canvas)
+(paper as any).setup(document.createElement('canvas'))
 
 describe('Item', () => {
   test('PaperItem', () => {

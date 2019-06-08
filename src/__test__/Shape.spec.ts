@@ -1,9 +1,8 @@
 import paper from 'paper'
 import { SolidBrush, Color } from 'paper-vueify-datatypes'
-import { ShapeItem, ShapeItemRenderer } from '../Shape'
+import { ShapeItem, ShapeItemRenderer } from '../model/Shape'
 
-const canvas = document.createElement('canvas')
-paper.setup(canvas)
+(paper as any).setup(document.createElement('canvas'))
 
 describe('Shape', () => {
   test('ShapeItem', () => {

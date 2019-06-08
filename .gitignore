@@ -3,6 +3,7 @@ node_modules
 /dist
 /gh-pages
 /coverage
+/gh-pages
 
 # local env files
 .env.local

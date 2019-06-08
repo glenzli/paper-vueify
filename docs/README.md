@@ -213,9 +213,9 @@ export default {
 :::
 
 ## Using symbol
-The symbol system is a bit different in **paper-vueify**, the **SymbolDefinitionObject** somehow corresponding to the **paper.Symbol** and the **SymbolItem** is mostly equivalent to the **paper.PlacedSymbol**.
+The symbol system is a bit different in **paper-vueify**, the **SymbolDefinitionObject** somehow corresponding to the **paper.SymbolDefinition** and the **SymbolItem** is mostly equivalent to the **paper.SymbolItem**.
 :::tip Notice
-**paper.Symbol** and **paper.PlacedSymbol** are definitions from **@types/paper**, but in the official document side, you'll find the document says they have **paper.SymbolDefintion** and **paper.SymbolItem**. By test you'll known that **paper.Symbol** is **paper.SymbolDefintion**, and **paper.PlacedSymbol** is **paper.SymbolItem**. Why they goes different, I have no idea, it's really confusing.
+**paper.js** just released it's official decelartions, so the @types/paper is abandoned, the library is updated with the official delcarations.
 :::
 ```ts
 interface SymbolDefinitionObject {

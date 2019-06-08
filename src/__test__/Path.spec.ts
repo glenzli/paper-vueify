@@ -1,10 +1,9 @@
 import paper from 'paper'
 import { Point } from 'paper-vueify-datatypes'
-import { PathItem, PathItemRenderer, Segment } from '../Path'
-import { GetItemTypename, GetItemType } from '../Item'
+import { PathItem, PathItemRenderer, Segment } from '../model/Path'
+import { GetItemTypename, GetItemType } from '../model/Item'
 
-const canvas = document.createElement('canvas')
-paper.setup(canvas)
+(paper as any).setup(document.createElement('canvas'))
 
 describe('Path', () => {
   test('Segment', () => {

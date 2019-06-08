@@ -1,8 +1,7 @@
 import paper from 'paper'
-import { PaperGraphic$ } from '../Graphic'
+import { PaperGraphic$ } from '../model/Graphic'
 
-const canvas = document.createElement('canvas')
-paper.setup(canvas)
+(paper as any).setup(document.createElement('canvas'))
 
 describe('PaperGraphic$', () => {
   test('From', () => {

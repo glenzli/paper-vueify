@@ -1,4 +1,4 @@
-import { $iMap } from '../IMap'
+import { $iMap } from '../model/IMap'
 
 describe('iMap', () => {
   test('New & Get', () => {

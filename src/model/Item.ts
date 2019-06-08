@@ -43,14 +43,14 @@ export class PaperItemRenderer {
 
   protected Hook() {
     if (this._on != null) {
-      this._visual.onClick = event => { this._on!('click', event) }
-      this._visual.onDoubleClick = event => { this._on!('doubleclick', event) }
-      this._visual.onMouseDown = event => { this._on!('mousedown', event) }
-      this._visual.onMouseDrag = event => { this._on!('mousedrag', event) }
-      this._visual.onMouseEnter = event => { this._on!('mouseenter', event) }
-      this._visual.onMouseLeave = event => { this._on!('mouseleave', event) }
-      this._visual.onMouseMove = event => { this._on!('mousemove', event) }
-      this._visual.onMouseUp = event => { this._on!('mouseup', event) }
+      this._visual.onClick = (event: paper.MouseEvent) => { this._on!('click', event) }
+      this._visual.onDoubleClick = (event: paper.MouseEvent) => { this._on!('doubleclick', event) }
+      this._visual.onMouseDown = (event: paper.MouseEvent) => { this._on!('mousedown', event) }
+      this._visual.onMouseDrag = (event: paper.MouseEvent) => { this._on!('mousedrag', event) }
+      this._visual.onMouseEnter = (event: paper.MouseEvent) => { this._on!('mouseenter', event) }
+      this._visual.onMouseLeave = (event: paper.MouseEvent) => { this._on!('mouseleave', event) }
+      this._visual.onMouseMove = (event: paper.MouseEvent) => { this._on!('mousemove', event) }
+      this._visual.onMouseUp = (event: paper.MouseEvent) => { this._on!('mouseup', event) }
     }
   }
 

@@ -22,9 +22,9 @@ export function SymbolItem({ key = '', ...base }: Partial<SymbolItemObject>) {
 export class SymbolItemRenderer extends PaperItemRenderer {
   RenderVisual(element: SymbolItemObject) {
     if (element.key) {
-      let symbol = $iMap.Get<paper.Symbol>(element.key)
+      let symbol = $iMap.Get<paper.SymbolDefinition>(element.key)
       if (symbol) {
-        return new paper.PlacedSymbol(symbol)
+        return new paper.SymbolItem(symbol)
       }
     }
     return new paper.Path()
