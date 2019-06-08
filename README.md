@@ -12,10 +12,7 @@ The recommended way to install and maintain paper-vueify in your project is thro
 ```sh
 npm install --save paper-vueify
 ```
-If you are using typescript environment, you may also need to install paper's declaration files:
-```sh
-npm install --save-dev @types/paper
-```
+Begin with **v1.1.5**, **paper-vueify** is synced with the newest official declarations of **paper.js v0.12.1**, since there are some differences between the **@types/paper** and the official one, PLEASE always use the official declarations in your typescript project and uninstall the **@types/paper** library, or you will get some complie errors.
 
 ## Usage
 Vue only works properly with plain object, the library comes with a series of redefinition of basic paper object, and the parameters of each object is almost identical to the original.
