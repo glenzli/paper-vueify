@@ -6,6 +6,7 @@ import { PaperItemObject, $iMap, PaperItemRenderer, GetItemType } from '../model
 @Component
 export class BasicMixin extends Vue {
   @Prop({ required: true }) element!: PaperItemObject
+  @Prop({ default: -1 }) index!: number
 
   rendererId: number = -1
 
@@ -16,7 +17,7 @@ export class BasicMixin extends Vue {
   @Watch('context', { deep: true })
   OnContextChanged() {
     $iMap.Get<PaperItemRenderer>(this.rendererId)!.Render(this.element)
-    this.$emit('draw', this.rendererId)
+    this.$emit('draw', this.rendererId, this.index)
   }
 
   @Watch('element.coordinate', { deep: true })
@@ -52,7 +53,7 @@ export class BasicMixin extends Vue {
     }
     renderer.On((type, event) => this.On(type, event))
     renderer.Render(this.element)
-    this.$emit('draw', this.rendererId)
+    this.$emit('draw', this.rendererId, this.index)
   }
 
   beforeDestroy() {

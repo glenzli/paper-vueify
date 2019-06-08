@@ -1,5 +1,5 @@
 <template>
-  <component :is="component" :element="element" v-on="$listeners"></component>
+  <component :is="component" :element="element" :index="index" v-on="$listeners"></component>
 </template>
 
 <script lang="ts">
@@ -14,6 +14,7 @@ import { BasicComponents} from './components'
 })
 export default class PItem extends Vue {
   @Prop({ required: true }) element!: PaperItemObject
+  @Prop({ default: -1 }) index!: number
 
   get component() {
     return `P${GetItemTypename(this.element.type)!}`
