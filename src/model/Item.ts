@@ -7,16 +7,19 @@ export interface PaperItemObject {
   coordinate: CoordinateObject,
   opacity: number,
   visible: boolean,
+  selectable: boolean,
 }
 
-export function PaperItem(type: number, { coordinate = Coordinate(), opacity = 1, visible = true }: Partial<PaperItemObject> = {}) {
-  return { type, coordinate, opacity, visible } as PaperItemObject
+export function PaperItem(type: number, { coordinate = Coordinate(), opacity = 1, visible = true, selectable = true }: Partial<PaperItemObject> = {}) {
+  return { type, coordinate, opacity, visible, selectable } as PaperItemObject
 }
 
 export class PaperItemRenderer {
   protected _id: number
   protected _visual!: paper.Item
   protected _on: ((type: string, event?: paper.MouseEvent) => void) | null = null
+  protected _selectable = false
+  protected _selected = false
 
   constructor() {
     this._id = $iMap.New(this)
@@ -37,13 +40,35 @@ export class PaperItemRenderer {
     return this._visual
   }
 
+  get selectable() {
+    return this._selectable
+  }
+
+  set selectable(value: boolean) {
+    this._selectable = value
+  }
+
+  get selected() {
+    return this._selected
+  }
+
+  set selected(value: boolean) {
+    this._selected = value
+    this._visual.selected = this._selected
+  }
+
   protected RenderVisual(element: PaperItemObject): paper.Item | null {
     return new paper.Path({ applyMatrix: false })
   }
 
   protected Hook() {
     if (this._on != null) {
-      this._visual.onClick = (event: paper.MouseEvent) => { this._on!('click', event) }
+      this._visual.onClick = (event: paper.MouseEvent) => {
+        if (this._selectable && this._visual.parent instanceof paper.Layer) {
+          this.selected = !this._selected
+        }
+        this._on!('click', event)
+      }
       this._visual.onDoubleClick = (event: paper.MouseEvent) => { this._on!('doubleclick', event) }
       this._visual.onMouseDown = (event: paper.MouseEvent) => { this._on!('mousedown', event) }
       this._visual.onMouseDrag = (event: paper.MouseEvent) => { this._on!('mousedrag', event) }
@@ -71,7 +96,9 @@ export class PaperItemRenderer {
   }
 
   Render(element: PaperItemObject) {
+    this._selectable = element.selectable
     this.ReplaceVisual(this.RenderVisual(element))
+    this._visual.selected = this._selected
     this.UpdateCoordinate(element.coordinate)
     this.UpdateOpacity(element.opacity)
     this.UpdateVisible(element.visible)

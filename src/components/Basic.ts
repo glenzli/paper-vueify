@@ -35,6 +35,11 @@ export class BasicMixin extends Vue {
     $iMap.Get<PaperItemRenderer>(this.rendererId)!.UpdateVisible(this.element.visible)
   }
 
+  @Watch('element.seletable')
+  OnSelectableChanged() {
+    $iMap.Get<PaperItemRenderer>(this.rendererId)!.selectable = this.element.selectable
+  }
+
   On(type: string, event?: paper.Event) {
     this.$emit(type, event)
   }

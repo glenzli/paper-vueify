@@ -35,7 +35,7 @@ export default class extends Vue {
   ]
   selected = 0
   handle = null as number | null
-  symbols = Generic.Clone(INITS).map(coordinate => SymbolItem({ key: this.definitions[this.selected].key, coordinate }))
+  symbols = Generic.Clone(INITS).map(coordinate => SymbolItem({ key: this.definitions[this.selected].key, coordinate, selectable: false }))
   counter = 0
 
   get buttons() {
