@@ -1,5 +1,5 @@
 import paper from 'paper'
-import { PaperGraphic$ } from '../model/Graphic'
+import { PaperGraphic$, CircleItem, PathItem } from '../model'
 
 (paper as any).setup(document.createElement('canvas'))
 
@@ -13,6 +13,7 @@ describe('PaperGraphic$', () => {
         { point: { x: 100, y: 0 }, handleIn: { x: 0, y: 0 }, handleOut: { x: 0, y: 0 } },
         { point: { x: 100, y: 100 }, handleIn: { x: 0, y: 0 }, handleOut: { x: 0, y: 0 } },
       ],
+      children: undefined,
       closed: true,
       brush: { type: 0 },
       stroke: {
@@ -30,7 +31,7 @@ describe('PaperGraphic$', () => {
         offset: { x: 0, y: 0 },
         enabled: false,
       },
-      type: 0,
+      type: PathItem().type,
       coordinate: {
         position: { x: 0, y: 0 },
         scale: { x: 1, y: 1 },
@@ -39,6 +40,12 @@ describe('PaperGraphic$', () => {
       },
       opacity: 1,
       visible: true,
+      selectable: true,
     })
+  })
+
+  test('To', () => {
+    let circle = CircleItem({ radius: 100 })
+    expect(PaperGraphic$.To(circle).bounds.size.equals(new paper.Size(200, 200))).toBeTruthy()
   })
 })

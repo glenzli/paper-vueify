@@ -32,6 +32,7 @@ describe('Shape', () => {
       },
       opacity: 1,
       visible: true,
+      selectable: true,
     })
   })
 

@@ -1,6 +1,7 @@
 import paper from 'paper'
 import { PathItem, PathItemObject } from './Path'
 import { Brush$, Point$, Stroke$, Shadow$ } from 'paper-vueify-datatypes'
+import { PaperItemObject, GetItemType, PaperItemRenderer } from './Item'
 
 export namespace PaperGraphic$ {
   function FromSegment(segment: paper.Segment) {
@@ -30,51 +31,34 @@ export namespace PaperGraphic$ {
     }
   }
 
-  export function To(item: PathItemObject) {
-    let visual: paper.Path | paper.CompoundPath
-    if (item.children) {
-      visual = new paper.CompoundPath({
-        children: item.children.map(c => new paper.Path({ segments: c.segments, applyMatrix: false, closed: c.closed !== undefined ? c.closed : item.closed, insert: false })),
-        applyMatrix: false,
-        insert: false,
-      })
-    } else {
-      visual = new paper.Path({
-        segments: item.segments,
-        closed: item.closed,
-        applyMatrix: false,
-        insert: false,
-      })
-    }
-    let props = {}
-    Object.assign(props, Stroke$.Interpret(item.stroke, visual))
-    Object.assign(props, { fillColor: Brush$.Interpret(item.brush, visual) })
-    Object.assign(props, Shadow$.Interpret(item.shadow))
-    visual.set(props)
-    return visual
+  export function To(element: PaperItemObject) {
+    let ctor = GetItemType(element.type)
+    let renderer = new ctor!() as PaperItemRenderer
+    renderer.Render(element)
+    return renderer.visual
   }
 
   export function Unite(item1: PathItemObject, item2: PathItemObject) {
-    let visual1 = To(item1)
-    let visual2 = To(item2)
+    let visual1 = To(item1) as paper.PathItem
+    let visual2 = To(item2) as paper.PathItem
     return From(visual1.unite(visual2, { isnert: false }))
   }
 
   export function Subtract(item1: PathItemObject, item2: PathItemObject) {
-    let visual1 = To(item1)
-    let visual2 = To(item2)
+    let visual1 = To(item1) as paper.PathItem
+    let visual2 = To(item2) as paper.PathItem
     return From(visual1.subtract(visual2, { insert: false }))
   }
 
   export function Exclude(item1: PathItemObject, item2: PathItemObject) {
-    let visual1 = To(item1)
-    let visual2 = To(item2)
+    let visual1 = To(item1) as paper.PathItem
+    let visual2 = To(item2) as paper.PathItem
     return From(visual1.exclude(visual2, { insert: false }))
   }
 
   export function Divide(item1: PathItemObject, item2: PathItemObject) {
-    let visual1 = To(item1)
-    let visual2 = To(item2)
+    let visual1 = To(item1) as paper.PathItem
+    let visual2 = To(item2) as paper.PathItem
     return From(visual1.divide(visual2, { insert: false }))
   }
 }

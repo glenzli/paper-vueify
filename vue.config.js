@@ -24,12 +24,10 @@ module.exports = {
 
       if (!process.env.DEMO_TARGET) {
         config.externals({
-          'arrayex': 'arrayex',
-          'direct-object': 'direct-object',
+          'js-corelib': 'js-corelib',
           'paper': 'paper',
           'paper-vueify-datatypes': 'paper-vueify-datatypes',
           'vue': 'vue',
-          'core-js': 'core-js'
         })
       } else {
         config.externals({

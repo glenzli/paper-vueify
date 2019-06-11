@@ -1,6 +1,6 @@
-import { DirectMapObject } from 'direct-object'
+import { ObjectArray } from 'js-corelib'
 
-let Demos: DirectMapObject<any> = {}
+let Demos: ObjectArray<any> = {}
 const imports = require.context('.', false, /\.vue$/)
 imports.keys().forEach(key => {
   let id = key.replace(/(\.\/|\.vue)/g, '')

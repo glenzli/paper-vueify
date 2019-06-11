@@ -10,8 +10,6 @@
 import paper, { Color } from 'paper'
 import { Component, Vue, Prop } from 'vue-property-decorator'
 import { PaperGraphic$, PolylineItem, PolygonItemObject, PolygonItem, CircleItem, RectangleItem, PaperItemObject, PaperItemRenderer, SymbolItem, SymbolDefinition } from '../model'
-import { Arrayex } from 'arrayex'
-import { Generic } from 'direct-object'
 import { Point, Stroke, Brush$, Coordinate, SolidBrush, Color$, Shadow, StrokeJoin, StrokeCap, NoneBrush, Point$, PointObject } from 'paper-vueify-datatypes'
 
 const RADIUS = 20
@@ -43,7 +41,7 @@ export default class extends Vue {
   }
 
   get boundary() {
-    return RectangleItem({ size: this.bound, brush: SolidBrush(Color$.ToColor('white')), stroke: Stroke({ dash: [1, 5] }) })
+    return RectangleItem({ size: this.bound, brush: SolidBrush(Color$.ToColor('white')), stroke: Stroke({ dash: [1, 5] }), selectable: false })
   }
 
   Move(event: paper.MouseEvent) {

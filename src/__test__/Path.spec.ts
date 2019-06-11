@@ -43,6 +43,7 @@ describe('Path', () => {
       },
       opacity: 1,
       visible: true,
+      selectable: true,
     })
   })
 

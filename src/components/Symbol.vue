@@ -5,7 +5,6 @@
 <script lang="ts">
 import { mixins } from 'vue-class-component'
 import { Component } from 'vue-property-decorator'
-import { DirectMap } from 'direct-object'
 import { SymbolItemObject } from '../model'
 import { BasicMixin } from './Basic'
 

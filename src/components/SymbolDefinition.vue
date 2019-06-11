@@ -6,7 +6,6 @@
 import paper from 'paper'
 import Vue from 'vue'
 import { Component, Prop, Watch } from 'vue-property-decorator'
-import { DirectMap } from 'direct-object'
 import { SymbolItemObject, SymbolDefinitionObject, GetItemTypename, $iMap, PaperItemRenderer } from '../model'
 import { BasicComponents} from './components'
 

@@ -16,6 +16,7 @@ describe('Item', () => {
       },
       opacity: 1,
       visible: true,
+      selectable: true,
     })
   })
 

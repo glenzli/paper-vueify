@@ -20,9 +20,8 @@
     "canvas"
   ],
   "dependencies": {
-    "arrayex": "^1.0.7",
     "core-js": "^2.6.5",
-    "direct-object": "^1.0.7",
+    "js-corelib": "^1.1.0",
     "paper": "^0.12.1",
     "paper-vueify-datatypes": "^1.0.2",
     "vue": "^2.6.10",
@@ -78,10 +77,10 @@
     "collectCoverage": true,
     "coverageThreshold": {
       "global": {
-        "branches": 50,
-        "functions": 60,
-        "lines": 50,
-        "satements": 50
+        "branches": 10,
+        "functions": 10,
+        "lines": 10,
+        "satements": 10
       }
     }
   }

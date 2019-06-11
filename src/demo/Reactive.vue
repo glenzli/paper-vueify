@@ -7,7 +7,7 @@
 <script lang="ts">
 import paper, { Color } from 'paper'
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import { Arrayex } from 'arrayex'
+import { Array$ } from 'js-corelib'
 import { Point } from 'paper-vueify-datatypes'
 import DataMark from './component/DataMark.vue'
 
@@ -18,7 +18,7 @@ export default class extends Vue {
   @Prop({ default: () => ({ width: 0, height: 0 }) }) size!: { width: number, height: number }
 
   handle = null as number | null
-  ys = Arrayex.Repeat(61, 0)
+  ys = Array$.Repeat(61, 0)
 
   get datapoints() {
     let bound = this.size.width / 1.5

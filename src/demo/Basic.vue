@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import { DirectMap, DirectMapObject, Generic } from 'direct-object'
+import { Generic } from 'js-corelib'
 import { RectangleItem, CircleItem, RegularPolygonItem, StarItem, PaperGraphic$, PaperItemObject, SymbolItem, SymbolDefinition, PointTextItem } from '../model'
 import { Point, SolidBrush, Color$, Coordinate, Stroke, Shadow, Point$ } from 'paper-vueify-datatypes'
 

@@ -71,6 +71,7 @@ interface PaperItemObject {
   coordinate: CoordinateObject,
   opacity: number,
   visible: boolean,
+  selectable: boolean, // controll is an element is selectable by cursor
 }
 
 // the shape base (not for use)
