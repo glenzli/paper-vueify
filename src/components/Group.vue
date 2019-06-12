@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p-item v-for="(child, index) in group.children" :key="index" :element="child" :index="index" @click="OnClick" @draw="OnDrawed" v-on="$listeners"></p-item>
+    <p-item v-for="(child, index) in group.children" :key="index" :element="child" :index="index" @click="OnClick" @draw="OnDrawed"></p-item>
   </div>
 </template>
 
