@@ -1,7 +1,7 @@
 {
   "name": "paper-vueify",
   "version": "1.1.11",
-  "author": "luz-alphacode <luz_alphacode@outlook.com>",
+  "author": "glenzli <luz_alphacode@outlook.com>",
   "description": "A vue adaptation of paper.js",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -53,12 +53,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luz-alphacode/paper-vueify.git"
+    "url": "git+https://github.com/glenzli/paper-vueify.git"
   },
   "bugs": {
-    "url": "https://github.com/luz-alphacode/paper-vueify/issues"
+    "url": "https://github.com/glenzli/paper-vueify/issues"
   },
-  "homepage": "https://github.com/luz-alphacode/paper-vueify#readme",
+  "homepage": "https://github.com/glenzli/paper-vueify#readme",
   "license": "MIT",
   "jest": {
     "setupFiles": [

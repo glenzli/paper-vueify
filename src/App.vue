@@ -63,7 +63,7 @@ export default class App extends Vue {
   }
 
   Jump() {
-    window.location.href = 'https://luz-alphacode.github.io/paper-vueify/api/'
+    window.location.href = 'https://glenzli.github.io/paper-vueify/api/'
   }
 }
 </script>

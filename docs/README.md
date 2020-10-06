@@ -1,8 +1,8 @@
 # Paper Vueify
-The [**paper-vueify**](https://github.com/luz-alphacode/paper-vueify) library is a bridge from paper.js to Vue, by combine the drawing ability of paper.js and the data-driven flexibility of Vue, it create a powerful tool for data visualization or animations. The use of **paper-vueify** is easy, here I'll show you the basic usage and the basic apis.
+The [**paper-vueify**](https://github.com/glenzli/paper-vueify) library is a bridge from paper.js to Vue, by combine the drawing ability of paper.js and the data-driven flexibility of Vue, it create a powerful tool for data visualization or animations. The use of **paper-vueify** is easy, here I'll show you the basic usage and the basic apis.
 
 :::tip Notice
-The basic data strucutres like **PointObject**, **CoordinateObject**, etc are moving to an independent pacakge called [**paper-vueify-datatypes**](https://github.com/luz-alphacode/paper-vueify-datatypes), you can follow this link to the [api documents](https://luz-alphacode.github.io/paper-vueify-datatypes/) of those objects.
+The basic data strucutres like **PointObject**, **CoordinateObject**, etc are moving to an independent pacakge called [**paper-vueify-datatypes**](https://github.com/glenzli/paper-vueify-datatypes), you can follow this link to the [api documents](https://glenzli.github.io/paper-vueify-datatypes/) of those objects.
 :::
 
 ## Get Started
@@ -64,7 +64,7 @@ The **p-item** is a generic load for any paper-vueify primitive object, it has a
   }
 </script>
 ```
-There are several primitives in **paper-vueify**, and here are their initialize interfaces (objects like **CoordinateObject** is definited in an independent pacakge called [**paper-vueify-datatypes**](https://luz-alphacode.github.io/paper-vueify-datatypes/)):
+There are several primitives in **paper-vueify**, and here are their initialize interfaces (objects like **CoordinateObject** is definited in an independent pacakge called [**paper-vueify-datatypes**](https://glenzli.github.io/paper-vueify-datatypes/)):
 ```ts
 // the base (not for use)
 interface PaperItemObject {
@@ -257,4 +257,4 @@ export default {
 :::
 
 ## Demo
-[Go back to the demo site for some dynamic examples.](https://luz-alphacode.github.io/paper-vueify/)
+[Go back to the demo site for some dynamic examples.](https://glenzli.github.io/paper-vueify/)
