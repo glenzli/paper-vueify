@@ -1,9 +1,10 @@
-import paper from 'paper'
-import { Point } from 'paper-vueify-datatypes'
-import { PathItem, PathItemRenderer, Segment } from '../model/Path'
-import { GetItemTypename, GetItemType } from '../model/Item'
+import 'jest';
+import paper from 'paper';
+import { Point } from 'paper-vueify-datatypes';
+import { PathItem, PathItemRenderer, Segment } from '../model/Path';
+import { GetItemTypename, GetItemType } from '../model/Item';
 
-(paper as any).setup(document.createElement('canvas'))
+(paper as any).setup(document.createElement('canvas'));
 
 describe('Path', () => {
   test('Segment', () => {
@@ -11,8 +12,8 @@ describe('Path', () => {
       point: Point(0, 0),
       handleIn: Point(0, 0),
       handleOut: Point(0, 0),
-    })
-  })
+    });
+  });
 
   test('PathItem', () => {
     expect(PathItem()).toEqual({
@@ -44,49 +45,49 @@ describe('Path', () => {
       opacity: 1,
       visible: true,
       selectable: true,
-    })
-  })
+    });
+  });
 
   test('Renderer Simple Path', () => {
-    let renderer = new PathItemRenderer()
-    let item = PathItem({ segments: [Segment(Point(0, 0)), Segment(Point(1, 0)), Segment(Point(1, 1)), Segment(Point(0, 1))], closed: false })
-    let visual = renderer.RenderVisual(item)
-    expect(visual.area).toEqual(1)
-  })
+    const renderer = new PathItemRenderer();
+    const item = PathItem({ segments: [Segment(Point(0, 0)), Segment(Point(1, 0)), Segment(Point(1, 1)), Segment(Point(0, 1))], closed: false });
+    const visual = renderer.RenderVisual(item);
+    expect(visual.area).toEqual(1);
+  });
 
   test('Renderer Compound Path', () => {
-    let renderer = new PathItemRenderer()
-    let item = PathItem({
+    const renderer = new PathItemRenderer();
+    const item = PathItem({
       children: [
         { segments: [Segment(Point(0, 0)), Segment(Point(3, 0)), Segment(Point(3, 3)), Segment(Point(0, 3))] },
         { segments: [Segment(Point(1, 1)), Segment(Point(1, 2)), Segment(Point(2, 2)), Segment(Point(2, 1))] },
       ],
       closed: true,
-    })
-    let visual = renderer.RenderVisual(item)
-    expect(visual.children.length).toEqual(2)
-    expect(visual.area).toEqual(8)
-  })
+    });
+    const visual = renderer.RenderVisual(item);
+    expect(visual.children.length).toEqual(2);
+    expect(visual.area).toEqual(8);
+  });
 
   test('Renderer Compound Path Different close state', () => {
-    let renderer = new PathItemRenderer()
-    let item = PathItem({
+    const renderer = new PathItemRenderer();
+    const item = PathItem({
       children: [
         { segments: [Segment(Point(0, 0)), Segment(Point(3, 0)), Segment(Point(3, 3)), Segment(Point(0, 3))] },
         { segments: [Segment(Point(0, 0)), Segment(Point(-3, 0))], closed: false },
       ],
       closed: true,
-    })
-    let visual = renderer.RenderVisual(item)
-    expect(visual.children.length).toEqual(2)
-    expect(visual.area).toEqual(9)
-    expect((visual.children[0] as paper.Path).closed).toEqual(true)
-    expect((visual.children[1] as paper.Path).closed).toEqual(false)
-  })
+    });
+    const visual = renderer.RenderVisual(item);
+    expect(visual.children.length).toEqual(2);
+    expect(visual.area).toEqual(9);
+    expect((visual.children[0] as paper.Path).closed).toEqual(true);
+    expect((visual.children[1] as paper.Path).closed).toEqual(false);
+  });
 
   test('Registered', () => {
-    let item = PathItem()
-    expect(GetItemTypename(item.type)).toEqual('Path')
-    expect(GetItemType(item.type)).toEqual(PathItemRenderer)
-  })
-})
+    const item = PathItem();
+    expect(GetItemTypename(item.type)).toEqual('Path');
+    expect(GetItemType(item.type)).toEqual(PathItemRenderer);
+  });
+});

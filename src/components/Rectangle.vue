@@ -3,19 +3,19 @@
 </template>
 
 <script lang="ts">
-import { mixins } from 'vue-class-component'
-import { Component } from 'vue-property-decorator'
-import { ShapeMixin } from './Shape'
-import { RectangleItemObject } from '../model'
+import { mixins } from 'vue-class-component';
+import { Component } from 'vue-property-decorator';
+import { ShapeMixin } from './Shape';
+import { RectangleItemObject } from '../model';
 
 @Component
 export default class PRectangle extends mixins(ShapeMixin) {
   get context() {
-    let element = this.element as RectangleItemObject
+    const element = this.element as RectangleItemObject;
     return {
       size: element.size,
       radius: element.radius,
-    }
+    };
   }
 }
 </script>

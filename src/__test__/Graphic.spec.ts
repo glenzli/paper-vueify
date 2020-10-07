@@ -1,11 +1,12 @@
-import paper from 'paper'
-import { PaperGraphic$, CircleItem, PathItem } from '../model'
+import 'jest';
+import paper from 'paper';
+import { PaperGraphic$, CircleItem, PathItem } from '../model';
 
-(paper as any).setup(document.createElement('canvas'))
+(paper as any).setup(document.createElement('canvas'));
 
 describe('PaperGraphic$', () => {
   test('From', () => {
-    let rect = new paper.Path.Rectangle({ point: [0, 0], size: [100, 100] })
+    const rect = new paper.Path.Rectangle({ point: [0, 0], size: [100, 100] });
     expect(PaperGraphic$.From(rect)).toEqual({
       segments: [
         { point: { x: 0, y: 100 }, handleIn: { x: 0, y: 0 }, handleOut: { x: 0, y: 0 } },
@@ -41,11 +42,11 @@ describe('PaperGraphic$', () => {
       opacity: 1,
       visible: true,
       selectable: true,
-    })
-  })
+    });
+  });
 
   test('To', () => {
-    let circle = CircleItem({ radius: 100 })
-    expect(PaperGraphic$.To(circle).bounds.size.equals(new paper.Size(200, 200))).toBeTruthy()
-  })
-})
+    const circle = CircleItem({ radius: 100 });
+    expect(PaperGraphic$.To(circle).bounds.size.equals(new paper.Size(200, 200))).toBeTruthy();
+  });
+});

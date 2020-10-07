@@ -13,6 +13,11 @@ module.exports = {
   chainWebpack: config => {
     // to get .d.ts declaration file, almost a year but the bug remains
     // disable cache loader
+    config.module.rule("vue").uses.delete('thread-loader');
+    config.module.rule("js").uses.delete('thread-loader');
+    config.module.rule("ts").uses.delete('thread-loader');
+    config.module.rule("tsx").uses.delete('thread-loader');
+
     if (process.env.NODE_ENV === 'production') {
       config.module.rule("ts").uses.delete("cache-loader");
 

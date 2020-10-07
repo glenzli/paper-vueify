@@ -3,20 +3,20 @@
 </template>
 
 <script lang="ts">
-import { mixins } from 'vue-class-component'
-import { Component } from 'vue-property-decorator'
-import { ShapeMixin } from './Shape'
-import { PathItemObject } from '../model'
+import { mixins } from 'vue-class-component';
+import { Component } from 'vue-property-decorator';
+import { ShapeMixin } from './Shape';
+import { PathItemObject } from '../model';
 
 @Component
 export default class PPath extends mixins(ShapeMixin) {
   get context() {
-    let element = this.element as PathItemObject
+    const element = this.element as PathItemObject;
     return {
       segments: element.segments,
       children: element.children,
       closed: element.closed,
-    }
+    };
   }
 }
 </script>

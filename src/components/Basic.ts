@@ -1,70 +1,70 @@
-import paper from 'paper'
-import Vue from 'vue'
-import { Component, Prop, Watch } from 'vue-property-decorator'
-import { PaperItemObject, $iMap, PaperItemRenderer, GetItemType } from '../model'
+import paper from 'paper';
+import Vue from 'vue';
+import { Component, Prop, Watch } from 'vue-property-decorator';
+import { PaperItemObject, $iMap, PaperItemRenderer, GetItemType } from '../model';
 
 @Component
 export class BasicMixin extends Vue {
-  @Prop({ required: true }) element!: PaperItemObject
-  @Prop({ default: -1 }) index!: number
+  @Prop({ required: true }) public element!: PaperItemObject;
+  @Prop({ default: -1 }) public index!: number;
 
-  rendererId: number = -1
+  public rendererId: number = -1;
 
   get context() {
-    return {}
+    return {};
   }
 
   @Watch('context', { deep: true })
-  OnContextChanged() {
-    $iMap.Get<PaperItemRenderer>(this.rendererId)!.Render(this.element)
-    this.$emit('draw', this.rendererId, this.index)
+  public OnContextChanged() {
+    $iMap.Get<PaperItemRenderer>(this.rendererId)!.Render(this.element);
+    this.$emit('draw', this.rendererId, this.index);
   }
 
   @Watch('element.coordinate', { deep: true })
-  OnCoordinateChanged() {
-    $iMap.Get<PaperItemRenderer>(this.rendererId)!.UpdateCoordinate(this.element.coordinate)
+  public OnCoordinateChanged() {
+    $iMap.Get<PaperItemRenderer>(this.rendererId)!.UpdateCoordinate(this.element.coordinate);
   }
 
   @Watch('element.opacity')
-  OnOpacityChanged() {
-    $iMap.Get<PaperItemRenderer>(this.rendererId)!.UpdateOpacity(this.element.opacity)
+  public OnOpacityChanged() {
+    $iMap.Get<PaperItemRenderer>(this.rendererId)!.UpdateOpacity(this.element.opacity);
   }
 
   @Watch('element.visible')
-  OnVisibleChanged() {
-    $iMap.Get<PaperItemRenderer>(this.rendererId)!.UpdateVisible(this.element.visible)
+  public OnVisibleChanged() {
+    $iMap.Get<PaperItemRenderer>(this.rendererId)!.UpdateVisible(this.element.visible);
   }
 
   @Watch('element.seletable')
-  OnSelectableChanged() {
-    $iMap.Get<PaperItemRenderer>(this.rendererId)!.selectable = this.element.selectable
+  public OnSelectableChanged() {
+    $iMap.Get<PaperItemRenderer>(this.rendererId)!.selectable = this.element.selectable;
   }
 
-  On(type: string, event?: paper.Event) {
-    this.$emit(type, event)
+  public On(type: string, event?: paper.Event) {
+    this.$emit(type, event);
   }
 
-  CreateRenderer(): PaperItemRenderer {
-    let constructor = GetItemType(this.element.type)!
-    let renderer = new constructor() as PaperItemRenderer
-    this.rendererId = renderer.id
-    return renderer
+  public CreateRenderer(): PaperItemRenderer {
+    const constructor = GetItemType(this.element.type)!;
+    const renderer = new constructor() as PaperItemRenderer;
+    this.rendererId = renderer.id;
+    return renderer;
   }
 
-  mounted() {
-    let renderer = $iMap.Get<PaperItemRenderer>(this.rendererId)
+  public mounted() {
+    let renderer = $iMap.Get<PaperItemRenderer>(this.rendererId);
     if (!renderer) {
-      renderer = this.CreateRenderer()
+      renderer = this.CreateRenderer();
     }
-    renderer.On((type, event) => this.On(type, event))
-    renderer.Render(this.element)
-    this.$emit('draw', this.rendererId, this.index)
+    renderer.On((type, event) => this.On(type, event));
+    renderer.Render(this.element);
+    this.$emit('draw', this.rendererId, this.index);
   }
 
-  beforeDestroy() {
-    let renderer = $iMap.Get<PaperItemRenderer>(this.rendererId)
+  public beforeDestroy() {
+    const renderer = $iMap.Get<PaperItemRenderer>(this.rendererId);
     if (renderer) {
-      renderer.Destroy()
+      renderer.Destroy();
     }
   }
 }

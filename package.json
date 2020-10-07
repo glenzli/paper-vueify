@@ -1,38 +1,41 @@
 {
   "name": "paper-vueify",
   "version": "1.1.11",
-  "author": "glenzli <luz_alphacode@outlook.com>",
+  "private": true,
   "description": "A vue adaptation of paper.js",
+  "author": {
+    "name": "glenzli",
+    "email": "glenzli@outlook.com"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name paper-vueify ./src/lib.ts",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "build:demo": "cross-env DEMO_TARGET=true vue-cli-service build --dest gh-pages && vuepress build docs",
-    "serve:docs": "vuepress dev docs",
     "build:docs": "vuepress build docs",
+    "serve:docs": "vuepress dev docs",
     "test": "jest"
   },
   "main": "./dist/paper-vueify.umd.js",
-  "typings": "dist/types/lib.d.ts",
-  "keywords": [
-    "paper",
-    "vue",
-    "canvas"
+  "files": [
+    "dist"
   ],
   "dependencies": {
-    "core-js": "^2.6.5",
+    "core-js": "^3.6.5",
     "js-corelib": "^1.1.3",
-    "paper": "^0.12.2",
+    "paper": "^0.12.11",
     "paper-vueify-datatypes": "^1.0.4",
-    "vue": "^2.6.10",
-    "vue-highlightjs": "^1.3.3"
+    "vue": "^2.6.11",
+    "vue-class-component": "^7.2.3",
+    "vue-highlightjs": "^1.3.3",
+    "vue-property-decorator": "^8.4.2"
   },
   "devDependencies": {
     "@types/highlight.js": "^9.12.3",
     "@types/jest": "^24.0.12",
-    "@vue/cli-plugin-babel": "^3.5.0",
-    "@vue/cli-plugin-typescript": "^3.5.0",
-    "@vue/cli-service": "^3.5.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
     "@vue/test-utils": "^1.0.0-beta.29",
     "codecov": "^3.5.0",
     "cross-env": "^5.2.0",
@@ -40,26 +43,14 @@
     "jest": "^24.8.0",
     "jest-canvas-mock": "^2.0.0",
     "less": "^3.0.4",
-    "less-loader": "^4.1.0",
+    "less-loader": "^5.0.0",
     "ts-jest": "^24.0.2",
-    "typescript": "^3.5.1",
+    "typescript": "~3.9.3",
     "vue-class-component": "^7.1.0",
     "vue-property-decorator": "^8.1.1",
-    "vue-template-compiler": "^2.6.10",
+    "vue-template-compiler": "^2.6.11",
     "vuepress": "^1.0.0"
   },
-  "files": [
-    "dist"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/glenzli/paper-vueify.git"
-  },
-  "bugs": {
-    "url": "https://github.com/glenzli/paper-vueify/issues"
-  },
-  "homepage": "https://github.com/glenzli/paper-vueify#readme",
-  "license": "MIT",
   "jest": {
     "setupFiles": [
       "jest-canvas-mock"
@@ -83,5 +74,22 @@
         "satements": 10
       }
     }
-  }
+  },
+  "_id": "paper-vueify@1.1.11",
+  "bugs": {
+    "url": "https://github.com/glenzli/paper-vueify/issues"
+  },
+  "homepage": "https://github.com/glenzli/paper-vueify#readme",
+  "keywords": [
+    "paper",
+    "vue",
+    "canvas"
+  ],
+  "license": "MIT",
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glenzli/paper-vueify.git"
+  },
+  "typings": "dist/types/lib.d.ts"
 }

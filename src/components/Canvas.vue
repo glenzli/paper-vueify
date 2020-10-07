@@ -3,56 +3,56 @@
 </template>
 
 <script lang="ts">
-import paper from 'paper'
-import Vue from 'vue'
-import { Component, Prop } from 'vue-property-decorator'
+import paper from 'paper';
+import Vue from 'vue';
+import { Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class PCanvas extends Vue {
-  @Prop({ default: false }) autosize!: boolean
+  @Prop({ default: false }) public autosize!: boolean;
 
-  ResizeCanvas() {
-    let canvas = this.$el as HTMLCanvasElement
+  public ResizeCanvas() {
+    const canvas = this.$el as HTMLCanvasElement;
     if (this.autosize) {
-      this.$paper.view.viewSize = new paper.Size(0, 0)
+      this.$paper.view.viewSize = new paper.Size(0, 0);
       setTimeout(() => {
-        let parent = canvas.parentElement!
-        let pStyle = getComputedStyle(parent)
-        let width = parent.clientWidth - parseFloat(pStyle.paddingLeft || '0') - parseFloat(pStyle.paddingRight || '0') - parseFloat(pStyle.borderLeftWidth || '0') - parseFloat(pStyle.borderRightWidth || '0')
-        let height = parent.clientHeight - parseFloat(pStyle.paddingTop || '0') - parseFloat(pStyle.paddingBottom || '0') - parseFloat(pStyle.borderTopWidth || '0') - parseFloat(pStyle.borderBottomWidth || '0')
-        this.$paper.view.viewSize = new paper.Size(width, height)
-        this.$paper.view.center = new paper.Point(0, 0)
-        this.$emit('resize', { width, height })
-      }, 0)
+        const parent = canvas.parentElement!;
+        const pStyle = getComputedStyle(parent);
+        const width = parent.clientWidth - parseFloat(pStyle.paddingLeft || '0') - parseFloat(pStyle.paddingRight || '0') - parseFloat(pStyle.borderLeftWidth || '0') - parseFloat(pStyle.borderRightWidth || '0');
+        const height = parent.clientHeight - parseFloat(pStyle.paddingTop || '0') - parseFloat(pStyle.paddingBottom || '0') - parseFloat(pStyle.borderTopWidth || '0') - parseFloat(pStyle.borderBottomWidth || '0');
+        this.$paper.view.viewSize = new paper.Size(width, height);
+        this.$paper.view.center = new paper.Point(0, 0);
+        this.$emit('resize', { width, height });
+      }, 0);
     }
   }
 
-  Hook() {
-    let on = (type: string, event: paper.Event) => { this.$emit(type, event) }
-    this.$paper.view.onClick = (e: paper.Event) => on('click', e)
-    this.$paper.view.onDoubleClick = (e: paper.Event) => { on('doubleclick', e) }
-    this.$paper.view.onMouseDown = (e: paper.Event) => { on('mousedown', e) }
-    this.$paper.view.onMouseDrag = (e: paper.Event) => { on('mousedrag', e) }
-    this.$paper.view.onMouseEnter = (e: paper.Event) => { on('mouseenter', e) }
-    this.$paper.view.onMouseLeave = (e: paper.Event) => { on('mouseleave', e) }
-    this.$paper.view.onMouseMove = (e: paper.Event) => { on('mousemove', e) }
-    this.$paper.view.onMouseUp = (e: paper.Event) => { on('mouseup', e) }
-    this.$paper.view.onFrame = (e: paper.Event) => { on('frame', e) }
+  public Hook() {
+    const on = (type: string, event: paper.Event) => { this.$emit(type, event); };
+    this.$paper.view.onClick = (e: paper.Event) => on('click', e);
+    this.$paper.view.onDoubleClick = (e: paper.Event) => { on('doubleclick', e); };
+    this.$paper.view.onMouseDown = (e: paper.Event) => { on('mousedown', e); };
+    this.$paper.view.onMouseDrag = (e: paper.Event) => { on('mousedrag', e); };
+    this.$paper.view.onMouseEnter = (e: paper.Event) => { on('mouseenter', e); };
+    this.$paper.view.onMouseLeave = (e: paper.Event) => { on('mouseleave', e); };
+    this.$paper.view.onMouseMove = (e: paper.Event) => { on('mousemove', e); };
+    this.$paper.view.onMouseUp = (e: paper.Event) => { on('mouseup', e); };
+    this.$paper.view.onFrame = (e: paper.Event) => { on('frame', e); };
   }
 
-  mounted() {
-    this.$paper.setup(this.$el as HTMLCanvasElement)
-    this.Hook()
-    this.$paper.view.center = new paper.Point(0, 0)
+  public mounted() {
+    this.$paper.setup(this.$el as HTMLCanvasElement);
+    this.Hook();
+    this.$paper.view.center = new paper.Point(0, 0);
     if (this.autosize) {
-      this.ResizeCanvas()
-      window.addEventListener('resize', this.ResizeCanvas)
+      this.ResizeCanvas();
+      window.addEventListener('resize', this.ResizeCanvas);
     }
   }
 
-  beforeDestroy() {
+  public beforeDestroy() {
     if (this.autosize) {
-      window.removeEventListener('resize', this.ResizeCanvas)
+      window.removeEventListener('resize', this.ResizeCanvas);
     }
   }
 }

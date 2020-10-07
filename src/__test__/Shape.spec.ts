@@ -1,8 +1,9 @@
-import paper from 'paper'
-import { SolidBrush, Color } from 'paper-vueify-datatypes'
-import { ShapeItem, ShapeItemRenderer } from '../model/Shape'
+import 'jest';
+import paper from 'paper';
+import { SolidBrush, Color } from 'paper-vueify-datatypes';
+import { ShapeItem, ShapeItemRenderer } from '../model/Shape';
 
-(paper as any).setup(document.createElement('canvas'))
+(paper as any).setup(document.createElement('canvas'));
 
 describe('Shape', () => {
   test('ShapeItem', () => {
@@ -33,12 +34,12 @@ describe('Shape', () => {
       opacity: 1,
       visible: true,
       selectable: true,
-    })
-  })
+    });
+  });
 
   test('Paint', () => {
-    let renderer = new ShapeItemRenderer()
-    renderer.Paint(ShapeItem(0, { brush: SolidBrush(Color(1, 0, 0, 1)) }))
-    expect((renderer.visual.fillColor as paper.Color).components).toEqual([1, 0, 0, 1])
-  })
-})
+    const renderer = new ShapeItemRenderer();
+    renderer.Paint(ShapeItem(0, { brush: SolidBrush(Color(1, 0, 0, 1)) }));
+    expect((renderer.visual.fillColor as paper.Color).components).toEqual([1, 0, 0, 1]);
+  });
+});

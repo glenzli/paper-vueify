@@ -7,25 +7,19 @@
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "declaration": true,
-    "declarationDir": "dist/types",
     "baseUrl": ".",
     "types": [
-      "webpack-env",
-      "jest"
+      "webpack-env"
     ],
     "paths": {
       "@/*": [
         "src/*"
       ]
     },
-    "typeRoots": [
-      "node_modules/@types",
-      "@types"
-    ],
     "lib": [
       "esnext",
       "dom",
