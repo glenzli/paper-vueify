@@ -34,11 +34,6 @@ module.exports = {
           'paper-vueify-datatypes': 'paper-vueify-datatypes',
           'vue': 'vue',
         })
-      } else {
-        config.externals({
-          'paper': 'paper',
-          'vue': 'Vue',
-        })
       }
     }
   }
